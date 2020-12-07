@@ -3,13 +3,13 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 7
-Title ""
+Sheet 2 9
+Title "PUTM_EV_Dashboard_2021"
 Date ""
 Rev ""
-Comp ""
-Comment1 ""
-Comment2 ""
+Comp "PUT Motorsport"
+Comment1 "Piotr Kwiatkowski"
+Comment2 "Tomasz Wojciechowski"
 Comment3 ""
 Comment4 ""
 $EndDescr
@@ -17,8 +17,8 @@ $Comp
 L Interface_CAN_LIN:MCP2562-H-SN U2
 U 1 1 61B06F42
 P 4450 3350
-F 0 "U2" H 4450 3928 50  0000 C CNN
-F 1 "MCP2562-H-SN" H 4450 3837 50  0000 C CNN
+F 0 "U2" H 4100 3700 50  0000 C CNN
+F 1 "MCP2562-H-SN" H 4800 3750 50  0000 C CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 4450 2850 50  0001 C CIN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/25167A.pdf" H 4450 3350 50  0001 C CNN
 	1    4450 3350
@@ -51,17 +51,6 @@ F 3 "" H 4450 3750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR0118
-U 1 1 61B070DF
-P 4250 2650
-F 0 "#PWR0118" H 4250 2400 50  0001 C CNN
-F 1 "GND" V 4255 2522 50  0000 R CNN
-F 2 "" H 4250 2650 50  0001 C CNN
-F 3 "" H 4250 2650 50  0001 C CNN
-	1    4250 2650
-	0    1    1    0   
-$EndComp
-$Comp
 L power:+5V #PWR0119
 U 1 1 61B0717A
 P 4450 2450
@@ -86,77 +75,40 @@ $EndComp
 $Comp
 L power:GND #PWR0121
 U 1 1 61B07269
-P 3500 3650
-F 0 "#PWR0121" H 3500 3400 50  0001 C CNN
-F 1 "GND" H 3505 3477 50  0000 C CNN
-F 2 "" H 3500 3650 50  0001 C CNN
-F 3 "" H 3500 3650 50  0001 C CNN
-	1    3500 3650
+P 3400 3750
+F 0 "#PWR0121" H 3400 3500 50  0001 C CNN
+F 1 "GND" H 3405 3577 50  0000 C CNN
+F 2 "" H 3400 3750 50  0001 C CNN
+F 3 "" H 3400 3750 50  0001 C CNN
+	1    3400 3750
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:C_Small C9
 U 1 1 61B072AA
-P 3500 3550
-F 0 "C9" H 3592 3596 50  0000 L CNN
-F 1 "C_Small" H 3592 3505 50  0000 L CNN
-F 2 "" H 3500 3550 50  0001 C CNN
-F 3 "~" H 3500 3550 50  0001 C CNN
-	1    3500 3550
+P 3400 3650
+F 0 "C9" H 3492 3696 50  0000 L CNN
+F 1 "100nF" H 3492 3605 50  0000 L CNN
+F 2 "" H 3400 3650 50  0001 C CNN
+F 3 "~" H 3400 3650 50  0001 C CNN
+	1    3400 3650
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3250 3450 3500 3450
-Wire Wire Line
-	3500 3450 3950 3450
-Connection ~ 3500 3450
-$Comp
-L Device:C_Small C10
-U 1 1 61B0746F
-P 4350 2650
-F 0 "C10" V 4121 2650 50  0000 C CNN
-F 1 "C_Small" V 4212 2650 50  0000 C CNN
-F 2 "" H 4350 2650 50  0001 C CNN
-F 3 "~" H 4350 2650 50  0001 C CNN
-	1    4350 2650
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	4450 2450 4450 2650
-Connection ~ 4450 2650
-Wire Wire Line
-	4450 2650 4450 2950
-Wire Wire Line
-	3700 3150 3950 3150
-Wire Wire Line
-	3700 3250 3950 3250
-Text GLabel 3700 3150 0    50   Input ~ 0
-TX_CAN
-Text GLabel 3700 3250 0    50   Input ~ 0
-RX_CAN
 $Comp
 L Device:R R3
 U 1 1 61B077A7
-P 5250 3350
-F 0 "R3" H 5320 3396 50  0000 L CNN
-F 1 "R" H 5320 3305 50  0000 L CNN
-F 2 "" V 5180 3350 50  0001 C CNN
-F 3 "~" H 5250 3350 50  0001 C CNN
-	1    5250 3350
+P 6700 3500
+F 0 "R3" H 6770 3546 50  0000 L CNN
+F 1 "120R" H 6770 3455 50  0000 L CNN
+F 2 "" V 6630 3500 50  0001 C CNN
+F 3 "~" H 6700 3500 50  0001 C CNN
+	1    6700 3500
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	4950 3250 5050 3250
 Wire Wire Line
-	5050 3250 5050 3200
-Wire Wire Line
-	5050 3200 5250 3200
-Wire Wire Line
 	4950 3450 5050 3450
-Wire Wire Line
-	5050 3450 5050 3500
-Wire Wire Line
-	5050 3500 5250 3500
 $Comp
 L Device:D_TVS_x2_AAC D1
 U 1 1 61B07D4F
@@ -180,34 +132,90 @@ F 3 "" H 6150 3350 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	5050 3200 5050 3000
-Wire Wire Line
 	5050 3000 6000 3000
-Connection ~ 5050 3200
-Wire Wire Line
-	5050 3500 5050 3700
 Wire Wire Line
 	5050 3700 6000 3700
-Connection ~ 5050 3500
 Connection ~ 6000 3700
+Connection ~ 6000 3000
+Text HLabel 2900 3150 0    50   Input ~ 0
+TXD
+Text HLabel 2900 3250 0    50   Output ~ 0
+RXD
+Wire Wire Line
+	2900 3150 3950 3150
+Wire Wire Line
+	2900 3250 3950 3250
+Wire Wire Line
+	3250 3450 3400 3450
+Wire Wire Line
+	3400 3550 3400 3450
+Connection ~ 3400 3450
+Wire Wire Line
+	3400 3450 3950 3450
+Wire Wire Line
+	5050 3000 5050 3250
+Wire Wire Line
+	5050 3450 5050 3700
+Text HLabel 7250 3000 2    50   BiDi ~ 0
+CANH
+Text HLabel 7250 3700 2    50   BiDi ~ 0
+CANL
+Wire Wire Line
+	6000 3000 6700 3000
+Wire Wire Line
+	6000 3700 6700 3700
 $Comp
-L Connector:Conn_01x02_Female J2
-U 1 1 61B0811E
-P 7050 3300
-F 0 "J2" H 7077 3276 50  0000 L CNN
-F 1 "Conn_01x02_Female" H 7077 3185 50  0000 L CNN
-F 2 "" H 7050 3300 50  0001 C CNN
-F 3 "~" H 7050 3300 50  0001 C CNN
-	1    7050 3300
+L Jumper:SolderJumper_2_Open JP?
+U 1 1 5FD7AB56
+P 6700 3200
+F 0 "JP?" V 6700 3268 50  0000 L CNN
+F 1 "a" V 6745 3268 50  0001 L CNN
+F 2 "" H 6700 3200 50  0001 C CNN
+F 3 "~" H 6700 3200 50  0001 C CNN
+	1    6700 3200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6700 3050 6700 3000
+Connection ~ 6700 3000
+Wire Wire Line
+	6700 3000 7250 3000
+Wire Wire Line
+	6700 3650 6700 3700
+Connection ~ 6700 3700
+Wire Wire Line
+	6700 3700 7250 3700
+$Comp
+L Device:C_Small C10
+U 1 1 61B0746F
+P 3800 2650
+F 0 "C10" V 3571 2650 50  0000 C CNN
+F 1 "1uF" V 3662 2650 50  0000 C CNN
+F 2 "" H 3800 2650 50  0001 C CNN
+F 3 "~" H 3800 2650 50  0001 C CNN
+	1    3800 2650
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6850 3700 6850 3400
+	3800 2800 3800 2750
 Wire Wire Line
-	6000 3700 6850 3700
+	4450 2450 4450 2500
 Wire Wire Line
-	6850 3300 6850 3000
+	3800 2550 3800 2500
 Wire Wire Line
-	6850 3000 6000 3000
-Connection ~ 6000 3000
+	3800 2500 4450 2500
+Connection ~ 4450 2500
+Wire Wire Line
+	4450 2500 4450 2950
+$Comp
+L power:GND #PWR?
+U 1 1 5FD7F8A4
+P 3800 2800
+F 0 "#PWR?" H 3800 2550 50  0001 C CNN
+F 1 "GND" H 3805 2627 50  0000 C CNN
+F 2 "" H 3800 2800 50  0001 C CNN
+F 3 "" H 3800 2800 50  0001 C CNN
+	1    3800 2800
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
