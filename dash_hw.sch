@@ -153,18 +153,12 @@ Wire Wire Line
 	2500 1450 1600 1450
 Wire Wire Line
 	1600 1450 1600 1700
-Text Label 1200 950  2    50   ~ 0
-SPI_MOSI
-Text Label 1200 1050 2    50   ~ 0
-SPI_CLK
-Text Label 1200 1150 2    50   ~ 0
-SPI_CS
 Text Label 4300 2500 2    50   ~ 0
-SPI_MOSI
+SPI_1_MOSI
 Text Label 4300 2400 2    50   ~ 0
-SPI_CLK
+SPI_1_CLK
 Text Label 4300 2300 2    50   ~ 0
-SPI_CS
+SPI_1_CS
 Wire Wire Line
 	1200 950  1650 950 
 Wire Wire Line
@@ -179,27 +173,9 @@ Connection ~ 1500 1150
 Wire Wire Line
 	1500 1150 1650 1150
 Wire Wire Line
-	1500 1900 1500 2650
-Wire Wire Line
-	1500 2650 1650 2650
-Connection ~ 1500 1900
-Wire Wire Line
-	1650 2450 1600 2450
-Wire Wire Line
-	1600 2450 1600 2200
-Wire Wire Line
-	1600 2200 2500 2200
-Wire Wire Line
-	2500 2200 2500 1800
-Wire Wire Line
-	2500 1800 2300 1800
-Wire Wire Line
 	1600 1700 1650 1700
 Wire Wire Line
-	1500 2650 1500 3450
-Wire Wire Line
 	1500 3450 1650 3450
-Connection ~ 1500 2650
 Wire Wire Line
 	2400 2550 2500 2550
 Wire Wire Line
@@ -212,28 +188,20 @@ Wire Wire Line
 	1600 3250 1650 3250
 Wire Wire Line
 	1650 3350 1400 3350
-Wire Wire Line
-	1400 3350 1400 2550
 Connection ~ 1400 1050
 Wire Wire Line
 	1400 1050 1650 1050
 Wire Wire Line
 	1650 1800 1400 1800
-Connection ~ 1400 1800
 Wire Wire Line
 	1400 1800 1400 1050
-Wire Wire Line
-	1650 2550 1400 2550
-Connection ~ 1400 2550
-Wire Wire Line
-	1400 2550 1400 1800
 $Comp
 L Regulator_Switching:LM2596S-5 U?
 U 1 1 5FD2508C
 P 4600 5250
 AR Path="/61C146B0/5FD2508C" Ref="U?"  Part="1" 
-AR Path="/5FD2508C" Ref="U?"  Part="1" 
-F 0 "U?" H 4600 5617 50  0000 C CNN
+AR Path="/5FD2508C" Ref="U2"  Part="1" 
+F 0 "U2" H 4600 5617 50  0000 C CNN
 F 1 "LM2596S-5" H 4600 5526 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:TO-263-5_TabPin3" H 4650 5000 50  0001 L CIN
 F 3 "http://www.ti.com/lit/ds/symlink/lm2596.pdf" H 4600 5250 50  0001 C CNN
@@ -258,10 +226,10 @@ L Device:C_Small C?
 U 1 1 5FD250AD
 P 6550 5550
 AR Path="/61C146B0/5FD250AD" Ref="C?"  Part="1" 
-AR Path="/5FD250AD" Ref="C?"  Part="1" 
-F 0 "C?" H 6642 5596 50  0000 L CNN
+AR Path="/5FD250AD" Ref="C6"  Part="1" 
+F 0 "C6" H 6642 5596 50  0000 L CNN
 F 1 "1uF" H 6642 5505 50  0000 L CNN
-F 2 "" H 6550 5550 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6550 5550 50  0001 C CNN
 F 3 "~" H 6550 5550 50  0001 C CNN
 	1    6550 5550
 	1    0    0    -1  
@@ -271,10 +239,10 @@ L Device:CP_Small C?
 U 1 1 5FD250B3
 P 3650 5400
 AR Path="/61C146B0/5FD250B3" Ref="C?"  Part="1" 
-AR Path="/5FD250B3" Ref="C?"  Part="1" 
-F 0 "C?" H 3750 5400 50  0000 L CNN
+AR Path="/5FD250B3" Ref="C3"  Part="1" 
+F 0 "C3" H 3750 5400 50  0000 L CNN
 F 1 "100uF" H 3650 5300 50  0000 L CNN
-F 2 "" H 3650 5400 50  0001 C CNN
+F 2 "Capacitor_SMD:CP_Elec_8x10" H 3650 5400 50  0001 C CNN
 F 3 "~" H 3650 5400 50  0001 C CNN
 	1    3650 5400
 	1    0    0    -1  
@@ -284,8 +252,8 @@ L power:GND #PWR?
 U 1 1 5FD250B9
 P 4600 5750
 AR Path="/61C146B0/5FD250B9" Ref="#PWR?"  Part="1" 
-AR Path="/5FD250B9" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 4600 5500 50  0001 C CNN
+AR Path="/5FD250B9" Ref="#PWR04"  Part="1" 
+F 0 "#PWR04" H 4600 5500 50  0001 C CNN
 F 1 "GND" H 4605 5577 50  0000 C CNN
 F 2 "" H 4600 5750 50  0001 C CNN
 F 3 "" H 4600 5750 50  0001 C CNN
@@ -307,10 +275,10 @@ L Device:D_Schottky D?
 U 1 1 5FD250C5
 P 5400 5550
 AR Path="/61C146B0/5FD250C5" Ref="D?"  Part="1" 
-AR Path="/5FD250C5" Ref="D?"  Part="1" 
-F 0 "D?" V 5354 5629 50  0000 L CNN
+AR Path="/5FD250C5" Ref="D3"  Part="1" 
+F 0 "D3" V 5354 5629 50  0000 L CNN
 F 1 "D_Schottky" V 5445 5629 50  0000 L CNN
-F 2 "" H 5400 5550 50  0001 C CNN
+F 2 "Diode_SMD:D_SMB" H 5400 5550 50  0001 C CNN
 F 3 "~" H 5400 5550 50  0001 C CNN
 	1    5400 5550
 	0    1    1    0   
@@ -320,8 +288,8 @@ L Device:L_Small L?
 U 1 1 5FD250CB
 P 5750 5350
 AR Path="/61C146B0/5FD250CB" Ref="L?"  Part="1" 
-AR Path="/5FD250CB" Ref="L?"  Part="1" 
-F 0 "L?" V 5700 5350 50  0000 C CNN
+AR Path="/5FD250CB" Ref="L1"  Part="1" 
+F 0 "L1" V 5700 5350 50  0000 C CNN
 F 1 "68uH" V 5844 5350 50  0000 C CNN
 F 2 "Inductor_SMD:L_10.4x10.4_H4.8" H 5750 5350 50  0001 C CNN
 F 3 "~" H 5750 5350 50  0001 C CNN
@@ -333,10 +301,10 @@ L Device:CP_Small C?
 U 1 1 5FD250D1
 P 6150 5550
 AR Path="/61C146B0/5FD250D1" Ref="C?"  Part="1" 
-AR Path="/5FD250D1" Ref="C?"  Part="1" 
-F 0 "C?" H 6238 5596 50  0000 L CNN
+AR Path="/5FD250D1" Ref="C5"  Part="1" 
+F 0 "C5" H 6238 5596 50  0000 L CNN
 F 1 "220uF" H 6238 5505 50  0000 L CNN
-F 2 "" H 6150 5550 50  0001 C CNN
+F 2 "Capacitor_SMD:CP_Elec_8x10" H 6150 5550 50  0001 C CNN
 F 3 "~" H 6150 5550 50  0001 C CNN
 	1    6150 5550
 	1    0    0    -1  
@@ -364,8 +332,8 @@ L power:+5V #PWR?
 U 1 1 5FD250E2
 P 6550 5200
 AR Path="/61C146B0/5FD250E2" Ref="#PWR?"  Part="1" 
-AR Path="/5FD250E2" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 6550 5050 50  0001 C CNN
+AR Path="/5FD250E2" Ref="#PWR05"  Part="1" 
+F 0 "#PWR05" H 6550 5050 50  0001 C CNN
 F 1 "+5V" H 6565 5373 50  0000 C CNN
 F 2 "" H 6550 5200 50  0001 C CNN
 F 3 "" H 6550 5200 50  0001 C CNN
@@ -377,10 +345,10 @@ L Regulator_Linear:LM1117-3.3 U?
 U 1 1 5FD250E8
 P 3150 6650
 AR Path="/61C146B0/5FD250E8" Ref="U?"  Part="1" 
-AR Path="/5FD250E8" Ref="U?"  Part="1" 
-F 0 "U?" H 3150 6892 50  0000 C CNN
+AR Path="/5FD250E8" Ref="U1"  Part="1" 
+F 0 "U1" H 3150 6892 50  0000 C CNN
 F 1 "LM1117-3.3" H 3150 6801 50  0000 C CNN
-F 2 "" H 3150 6650 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 3150 6650 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/lm1117.pdf" H 3150 6650 50  0001 C CNN
 	1    3150 6650
 	1    0    0    -1  
@@ -390,8 +358,8 @@ L power:+5V #PWR?
 U 1 1 5FD250EE
 P 2500 6550
 AR Path="/61C146B0/5FD250EE" Ref="#PWR?"  Part="1" 
-AR Path="/5FD250EE" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 2500 6400 50  0001 C CNN
+AR Path="/5FD250EE" Ref="#PWR01"  Part="1" 
+F 0 "#PWR01" H 2500 6400 50  0001 C CNN
 F 1 "+5V" H 2515 6723 50  0000 C CNN
 F 2 "" H 2500 6550 50  0001 C CNN
 F 3 "" H 2500 6550 50  0001 C CNN
@@ -403,10 +371,10 @@ L Device:C_Small C?
 U 1 1 5FD250F4
 P 2500 6800
 AR Path="/61C146B0/5FD250F4" Ref="C?"  Part="1" 
-AR Path="/5FD250F4" Ref="C?"  Part="1" 
-F 0 "C?" H 2592 6846 50  0000 L CNN
+AR Path="/5FD250F4" Ref="C1"  Part="1" 
+F 0 "C1" H 2592 6846 50  0000 L CNN
 F 1 "100nF" H 2592 6755 50  0000 L CNN
-F 2 "" H 2500 6800 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 2500 6800 50  0001 C CNN
 F 3 "~" H 2500 6800 50  0001 C CNN
 	1    2500 6800
 	1    0    0    -1  
@@ -416,10 +384,10 @@ L Device:C_Small C?
 U 1 1 5FD250FA
 P 3600 6800
 AR Path="/61C146B0/5FD250FA" Ref="C?"  Part="1" 
-AR Path="/5FD250FA" Ref="C?"  Part="1" 
-F 0 "C?" H 3692 6846 50  0000 L CNN
+AR Path="/5FD250FA" Ref="C2"  Part="1" 
+F 0 "C2" H 3692 6846 50  0000 L CNN
 F 1 "100nF" H 3692 6755 50  0000 L CNN
-F 2 "" H 3600 6800 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 3600 6800 50  0001 C CNN
 F 3 "~" H 3600 6800 50  0001 C CNN
 	1    3600 6800
 	1    0    0    -1  
@@ -429,8 +397,8 @@ L power:GND #PWR?
 U 1 1 5FD25100
 P 3150 7100
 AR Path="/61C146B0/5FD25100" Ref="#PWR?"  Part="1" 
-AR Path="/5FD25100" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 3150 6850 50  0001 C CNN
+AR Path="/5FD25100" Ref="#PWR02"  Part="1" 
+F 0 "#PWR02" H 3150 6850 50  0001 C CNN
 F 1 "GND" H 3155 6927 50  0000 C CNN
 F 2 "" H 3150 7100 50  0001 C CNN
 F 3 "" H 3150 7100 50  0001 C CNN
@@ -442,8 +410,8 @@ L power:+3.3V #PWR?
 U 1 1 5FD25107
 P 4000 6550
 AR Path="/61C146B0/5FD25107" Ref="#PWR?"  Part="1" 
-AR Path="/5FD25107" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 4000 6400 50  0001 C CNN
+AR Path="/5FD25107" Ref="#PWR03"  Part="1" 
+F 0 "#PWR03" H 4000 6400 50  0001 C CNN
 F 1 "+3.3V" H 4015 6723 50  0000 C CNN
 F 2 "" H 4000 6550 50  0001 C CNN
 F 3 "" H 4000 6550 50  0001 C CNN
@@ -506,10 +474,10 @@ Wire Wire Line
 Text Notes 4450 4750 0    50   ~ 0
 POWER
 $Comp
-L Device:D_TVS D?
+L Device:D_TVS D1
 U 1 1 5FD4D349
 P 1850 5500
-F 0 "D?" V 1804 5579 50  0000 L CNN
+F 0 "D1" V 1804 5579 50  0000 L CNN
 F 1 "SMAJ24CA" V 1895 5579 50  0000 L CNN
 F 2 "Diode_SMD:D_SMA" H 1850 5500 50  0001 C CNN
 F 3 "~" H 1850 5500 50  0001 C CNN
@@ -521,10 +489,10 @@ L Device:C_Small C?
 U 1 1 5FD6239C
 P 4000 6800
 AR Path="/61C146B0/5FD6239C" Ref="C?"  Part="1" 
-AR Path="/5FD6239C" Ref="C?"  Part="1" 
-F 0 "C?" H 4092 6846 50  0000 L CNN
+AR Path="/5FD6239C" Ref="C4"  Part="1" 
+F 0 "C4" H 4092 6846 50  0000 L CNN
 F 1 "1uF" H 4092 6755 50  0000 L CNN
-F 2 "" H 4000 6800 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 4000 6800 50  0001 C CNN
 F 3 "~" H 4000 6800 50  0001 C CNN
 	1    4000 6800
 	1    0    0    -1  
@@ -551,12 +519,12 @@ Wire Wire Line
 Wire Wire Line
 	1850 5150 1850 5350
 $Comp
-L Device:R R?
+L Device:R R1
 U 1 1 5FD84941
 P 2450 5700
-F 0 "R?" H 2520 5746 50  0000 L CNN
+F 0 "R1" H 2520 5746 50  0000 L CNN
 F 1 "10k" H 2520 5655 50  0000 L CNN
-F 2 "" V 2380 5700 50  0001 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2380 5700 50  0001 C CNN
 F 3 "~" H 2450 5700 50  0001 C CNN
 	1    2450 5700
 	1    0    0    -1  
@@ -564,10 +532,10 @@ $EndComp
 Wire Wire Line
 	2450 5550 2450 5500
 $Comp
-L Device:D_Zener D?
+L Device:D_Zener D2
 U 1 1 5FD8CF67
 P 2750 5500
-F 0 "D?" H 2750 5284 50  0000 C CNN
+F 0 "D2" H 2750 5284 50  0000 C CNN
 F 1 "MM3Z12VST1G" H 2750 5375 50  0000 C CNN
 F 2 "Diode_SMD:D_SOD-323" H 2750 5500 50  0001 C CNN
 F 3 "~" H 2750 5500 50  0001 C CNN
@@ -617,12 +585,12 @@ Text Label 1400 5900 2    50   ~ 0
 GLV-
 NoConn ~ 2300 3350
 $Comp
-L Connector_Generic:Conn_01x04 J?
+L Connector_Generic:Conn_01x04 J1
 U 1 1 5FDE07F9
 P 9300 4350
-F 0 "J?" H 9380 4342 50  0000 L CNN
+F 0 "J1" H 9380 4342 50  0000 L CNN
 F 1 "Conn_01x04" H 9380 4251 50  0000 L CNN
-F 2 "" H 9300 4350 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 9300 4350 50  0001 C CNN
 F 3 "~" H 9300 4350 50  0001 C CNN
 	1    9300 4350
 	1    0    0    -1  
@@ -648,4 +616,39 @@ F 3 "https://www.tme.eu/Document/250d260377fe1e01ee709e3eafa0c268/DMP3056L.pdf" 
 	1    2450 5250
 	0    -1   -1   0   
 $EndComp
+Text Label 4300 2150 2    50   ~ 0
+SPI_2_MOSI
+Text Label 4300 2050 2    50   ~ 0
+SPI_2_CLK
+Text Label 4300 1950 2    50   ~ 0
+SPI_2_CS
+Text Label 1200 950  2    50   ~ 0
+SPI_1_MOSI
+Text Label 1200 1050 2    50   ~ 0
+SPI_1_CLK
+Text Label 1200 1150 2    50   ~ 0
+SPI_1_CS
+NoConn ~ 2300 1800
+Text Label 1200 2450 2    50   ~ 0
+SPI_2_MOSI
+Text Label 1200 2550 2    50   ~ 0
+SPI_2_CLK
+Text Label 1200 2650 2    50   ~ 0
+SPI_2_CS
+Wire Wire Line
+	1200 2450 1650 2450
+Wire Wire Line
+	1200 2550 1400 2550
+Wire Wire Line
+	1200 2650 1500 2650
+Wire Wire Line
+	1400 3350 1400 2550
+Connection ~ 1400 2550
+Wire Wire Line
+	1400 2550 1650 2550
+Wire Wire Line
+	1500 2650 1500 3450
+Connection ~ 1500 2650
+Wire Wire Line
+	1500 2650 1650 2650
 $EndSCHEMATC

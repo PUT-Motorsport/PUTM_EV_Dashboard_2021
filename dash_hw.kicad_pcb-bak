@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 5)
+    (drawings 4)
     (tracks 0)
     (zones 0)
     (modules 195)
@@ -4341,8 +4341,8 @@
     )
   )
 
-  (module Display:WC1602A (layer F.Cu) (tedit 5A02FE80) (tstamp 5FDFAE70)
-    (at 120.65 111.76)
+  (module Display:WC1602A (layer F.Cu) (tedit 5A02FE80) (tstamp 5FDE56B7)
+    (at 120.65 116.84)
     (descr "LCD 16x2 http://www.wincomlcd.com/pdf/WC1602A-SFYLYHTC06.pdf")
     (tags "LCD 16x2 Alphanumeric 16pin")
     (path /5FBBB385/620FE188)
@@ -8479,18 +8479,6 @@
     )
   )
 
-  (dimension 16.51 (width 0.15) (layer Dwgs.User)
-    (gr_text "16,510 mm" (at 231.17 106.045 270) (layer Dwgs.User)
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (feature1 (pts (xy 152.4 114.3) (xy 230.456421 114.3)))
-    (feature2 (pts (xy 152.4 97.79) (xy 230.456421 97.79)))
-    (crossbar (pts (xy 229.87 97.79) (xy 229.87 114.3)))
-    (arrow1a (pts (xy 229.87 114.3) (xy 229.283579 113.173496)))
-    (arrow1b (pts (xy 229.87 114.3) (xy 230.456421 113.173496)))
-    (arrow2a (pts (xy 229.87 97.79) (xy 229.283579 98.916504)))
-    (arrow2b (pts (xy 229.87 97.79) (xy 230.456421 98.916504)))
-  )
   (dimension 22.86 (width 0.15) (layer F.Fab)
     (gr_text "22,860 mm" (at 230.535 86.36 90) (layer F.Fab)
       (effects (font (size 1 1) (thickness 0.15)))
