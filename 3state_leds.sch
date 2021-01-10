@@ -31,42 +31,6 @@ Wire Wire Line
 Wire Wire Line
 	4450 4350 4800 4350
 Wire Wire Line
-	4450 6800 4800 6800
-Wire Wire Line
-	4450 6900 4800 6900
-Wire Wire Line
-	4800 6800 4800 6750
-Wire Wire Line
-	4800 6750 4850 6750
-Wire Wire Line
-	4800 6900 4800 6950
-Wire Wire Line
-	4800 6950 4850 6950
-Wire Wire Line
-	4450 7000 4750 7000
-Wire Wire Line
-	4750 7000 4750 7150
-Wire Wire Line
-	4750 7150 4850 7150
-Wire Wire Line
-	4450 7100 4700 7100
-Wire Wire Line
-	4700 7100 4700 7350
-Wire Wire Line
-	4700 7350 4850 7350
-Wire Wire Line
-	4650 7550 4650 7200
-Wire Wire Line
-	4650 7200 4450 7200
-Wire Wire Line
-	4650 7550 4850 7550
-Wire Wire Line
-	4450 6700 4750 6700
-Wire Wire Line
-	4750 6700 4750 6550
-Wire Wire Line
-	4750 6550 4850 6550
-Wire Wire Line
 	4450 6600 4700 6600
 Wire Wire Line
 	4700 6600 4700 6350
@@ -253,40 +217,8 @@ Wire Wire Line
 Wire Wire Line
 	5750 6150 5750 6350
 Wire Wire Line
-	5750 7550 5650 7550
-Wire Wire Line
-	5650 7350 5750 7350
-Connection ~ 5750 7350
-Wire Wire Line
-	5750 7350 5750 7550
-Wire Wire Line
-	5650 7150 5750 7150
-Connection ~ 5750 7150
-Wire Wire Line
-	5750 7150 5750 7350
-Wire Wire Line
-	5650 6950 5750 6950
-Connection ~ 5750 6950
-Wire Wire Line
-	5750 6950 5750 7150
-Wire Wire Line
-	5650 6750 5750 6750
-Connection ~ 5750 6750
-Wire Wire Line
-	5750 6750 5750 6950
-Wire Wire Line
-	5650 6550 5750 6550
-Connection ~ 5750 6550
-Wire Wire Line
-	5750 6550 5750 6750
-Wire Wire Line
 	5650 6350 5750 6350
 Connection ~ 5750 6350
-Wire Wire Line
-	5750 6350 5750 6550
-Wire Wire Line
-	5750 7550 5750 7650
-Connection ~ 5750 7550
 Wire Wire Line
 	4450 2900 4550 2900
 Wire Wire Line
@@ -1095,178 +1027,10 @@ F 3 "~" H 5500 6350 50  0001 C CNN
 	1    5500 6350
 	-1   0    0    1   
 $EndComp
-$Comp
-L Device:R R?
-U 1 1 5FEC666B
-P 5000 6550
-AR Path="/5FEC666B" Ref="R?"  Part="1" 
-AR Path="/5FCC310D/5FEC666B" Ref="R75"  Part="1" 
-F 0 "R75" V 4900 6550 50  0000 C CNN
-F 1 "200" V 5000 6550 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 4930 6550 50  0001 C CNN
-F 3 "~" H 5000 6550 50  0001 C CNN
-	1    5000 6550
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:LED D?
-U 1 1 5FEC6671
-P 5500 6550
-AR Path="/5FEC6671" Ref="D?"  Part="1" 
-AR Path="/5FCC310D/5FEC6671" Ref="D49"  Part="1" 
-F 0 "D49" H 5500 6450 50  0000 C CNN
-F 1 "LED" H 5492 6386 50  0001 C CNN
-F 2 "LED_THT:LED_D3.0mm_Clear" H 5500 6550 50  0001 C CNN
-F 3 "~" H 5500 6550 50  0001 C CNN
-	1    5500 6550
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:R R?
-U 1 1 5FEC6677
-P 5000 6750
-AR Path="/5FEC6677" Ref="R?"  Part="1" 
-AR Path="/5FCC310D/5FEC6677" Ref="R76"  Part="1" 
-F 0 "R76" V 4900 6750 50  0000 C CNN
-F 1 "200" V 5000 6750 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 4930 6750 50  0001 C CNN
-F 3 "~" H 5000 6750 50  0001 C CNN
-	1    5000 6750
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:LED D?
-U 1 1 5FEC667D
-P 5500 6750
-AR Path="/5FEC667D" Ref="D?"  Part="1" 
-AR Path="/5FCC310D/5FEC667D" Ref="D50"  Part="1" 
-F 0 "D50" H 5500 6650 50  0000 C CNN
-F 1 "LED" H 5492 6586 50  0001 C CNN
-F 2 "LED_THT:LED_D3.0mm_Clear" H 5500 6750 50  0001 C CNN
-F 3 "~" H 5500 6750 50  0001 C CNN
-	1    5500 6750
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:R R?
-U 1 1 5FEC6683
-P 5000 6950
-AR Path="/5FEC6683" Ref="R?"  Part="1" 
-AR Path="/5FCC310D/5FEC6683" Ref="R77"  Part="1" 
-F 0 "R77" V 4900 6950 50  0000 C CNN
-F 1 "200" V 5000 6950 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 4930 6950 50  0001 C CNN
-F 3 "~" H 5000 6950 50  0001 C CNN
-	1    5000 6950
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:LED D?
-U 1 1 5FEC6689
-P 5500 6950
-AR Path="/5FEC6689" Ref="D?"  Part="1" 
-AR Path="/5FCC310D/5FEC6689" Ref="D51"  Part="1" 
-F 0 "D51" H 5500 6850 50  0000 C CNN
-F 1 "LED" H 5492 6786 50  0001 C CNN
-F 2 "LED_THT:LED_D3.0mm_Clear" H 5500 6950 50  0001 C CNN
-F 3 "~" H 5500 6950 50  0001 C CNN
-	1    5500 6950
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:R R?
-U 1 1 5FEC668F
-P 5000 7150
-AR Path="/5FEC668F" Ref="R?"  Part="1" 
-AR Path="/5FCC310D/5FEC668F" Ref="R78"  Part="1" 
-F 0 "R78" V 4900 7150 50  0000 C CNN
-F 1 "200" V 5000 7150 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 4930 7150 50  0001 C CNN
-F 3 "~" H 5000 7150 50  0001 C CNN
-	1    5000 7150
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:LED D?
-U 1 1 5FEC6695
-P 5500 7150
-AR Path="/5FEC6695" Ref="D?"  Part="1" 
-AR Path="/5FCC310D/5FEC6695" Ref="D52"  Part="1" 
-F 0 "D52" H 5500 7050 50  0000 C CNN
-F 1 "LED" H 5492 6986 50  0001 C CNN
-F 2 "LED_THT:LED_D3.0mm_Clear" H 5500 7150 50  0001 C CNN
-F 3 "~" H 5500 7150 50  0001 C CNN
-	1    5500 7150
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:R R?
-U 1 1 5FEC669B
-P 5000 7350
-AR Path="/5FEC669B" Ref="R?"  Part="1" 
-AR Path="/5FCC310D/5FEC669B" Ref="R79"  Part="1" 
-F 0 "R79" V 4900 7350 50  0000 C CNN
-F 1 "200" V 5000 7350 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 4930 7350 50  0001 C CNN
-F 3 "~" H 5000 7350 50  0001 C CNN
-	1    5000 7350
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:LED D?
-U 1 1 5FEC66A1
-P 5500 7350
-AR Path="/5FEC66A1" Ref="D?"  Part="1" 
-AR Path="/5FCC310D/5FEC66A1" Ref="D53"  Part="1" 
-F 0 "D53" H 5500 7250 50  0000 C CNN
-F 1 "LED" H 5492 7186 50  0001 C CNN
-F 2 "LED_THT:LED_D3.0mm_Clear" H 5500 7350 50  0001 C CNN
-F 3 "~" H 5500 7350 50  0001 C CNN
-	1    5500 7350
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:R R?
-U 1 1 5FEC66A7
-P 5000 7550
-AR Path="/5FEC66A7" Ref="R?"  Part="1" 
-AR Path="/5FCC310D/5FEC66A7" Ref="R80"  Part="1" 
-F 0 "R80" V 4900 7550 50  0000 C CNN
-F 1 "200" V 5000 7550 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 4930 7550 50  0001 C CNN
-F 3 "~" H 5000 7550 50  0001 C CNN
-	1    5000 7550
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	5150 6150 5350 6150
 Wire Wire Line
 	5150 6350 5350 6350
-Wire Wire Line
-	5150 6550 5350 6550
-Wire Wire Line
-	5150 6750 5350 6750
-Wire Wire Line
-	5150 6950 5350 6950
-Wire Wire Line
-	5150 7150 5350 7150
-Wire Wire Line
-	5150 7350 5350 7350
-Wire Wire Line
-	5150 7550 5350 7550
-$Comp
-L Device:LED D?
-U 1 1 5FEC66B5
-P 5500 7550
-AR Path="/5FEC66B5" Ref="D?"  Part="1" 
-AR Path="/5FCC310D/5FEC66B5" Ref="D54"  Part="1" 
-F 0 "D54" H 5500 7450 50  0000 C CNN
-F 1 "LED" H 5500 7450 50  0001 C CNN
-F 2 "LED_THT:LED_D3.0mm_Clear" H 5500 7550 50  0001 C CNN
-F 3 "~" H 5500 7550 50  0001 C CNN
-	1    5500 7550
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	3650 4250 3200 4250
 $Comp
@@ -1295,4 +1059,12 @@ F 3 "" H 3550 7200 50  0001 C CNN
 	1    3550 7200
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	5750 6350 5750 7650
+NoConn ~ 4450 6700
+NoConn ~ 4450 6800
+NoConn ~ 4450 6900
+NoConn ~ 4450 7000
+NoConn ~ 4450 7100
+NoConn ~ 4450 7200
 $EndSCHEMATC
