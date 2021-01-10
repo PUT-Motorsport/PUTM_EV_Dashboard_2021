@@ -548,7 +548,7 @@ Wire Wire Line
 	2950 5500 2950 5150
 Connection ~ 2950 5150
 Wire Wire Line
-	2950 5150 3650 5150
+	2950 5150 3250 5150
 Wire Wire Line
 	2600 5500 2450 5500
 Connection ~ 2450 5500
@@ -651,4 +651,25 @@ Wire Wire Line
 Connection ~ 1500 2650
 Wire Wire Line
 	1500 2650 1650 2650
+$Comp
+L Device:C_Small C?
+U 1 1 5FFB0B2D
+P 3250 5400
+AR Path="/61C146B0/5FFB0B2D" Ref="C?"  Part="1" 
+AR Path="/5FFB0B2D" Ref="C22"  Part="1" 
+F 0 "C22" H 3342 5446 50  0000 L CNN
+F 1 "470nF" H 3342 5355 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric" H 3250 5400 50  0001 C CNN
+F 3 "~" H 3250 5400 50  0001 C CNN
+	1    3250 5400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3250 5300 3250 5150
+Connection ~ 3250 5150
+Wire Wire Line
+	3250 5150 3650 5150
+Wire Wire Line
+	3250 5500 3250 5750
+Connection ~ 3250 5750
 $EndSCHEMATC
