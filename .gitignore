@@ -64,3 +64,6 @@ core
 
 *.zip
 
+.idea/
+cmake-build-debug/
+CMake*
