@@ -18,6 +18,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <utilities.h>
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -79,7 +80,8 @@ uint8_t updateDisplays;
 uint8_t speedOrHvPer;
 uint8_t error;
 
-uint64_t led_array;
+uint64_t ledArray;
+uint32_t segDisplayArray;
 
 /* USER CODE END PV */
 
@@ -155,20 +157,27 @@ int main(void) {
     updateDisplays = 0;
     speedOrHvPer = 0;
     error = 0;
-    led_array = 0;
+    ledArray = 0;
 
     /* USER CODE END 2 */
 
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
     while (1) {
-
+        uint8_t status = 0;
         if (updateDisplays) {
-            // send data to LED
+                // send data to LED
+                status |= sendLed();
 
-            // send data to 7seg displays
+                // send data to 7seg displays
+                status |= send7Seg();
 
-            // send data to alfanum display
+                // send data to alfanum display
+                status |= sendAlfaNum();
+        }
+
+        if (status){
+            Error_Handler();
         }
 
         /* USER CODE END WHILE */
