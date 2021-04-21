@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:dash_hw-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -54,16 +55,6 @@ F4 "D6" I L 6000 1850 50
 F5 "D7" I L 6000 1950 50 
 F6 "E" I L 6000 1550 50 
 F7 "RS" I L 6000 1450 50 
-$EndSheet
-$Sheet
-S 1650 1600 650  400 
-U 61EF75E6
-F0 "Rev" 50
-F1 "Rev.sch" 50
-F2 "SER" I L 1650 1700 50 
-F3 "SRCLK" I L 1650 1800 50 
-F4 "RCLK" I L 1650 1900 50 
-F5 "QH'" O R 2300 1800 50 
 $EndSheet
 $Sheet
 S 1650 2350 750  400 
@@ -145,14 +136,6 @@ Wire Wire Line
 	6000 1850 5350 1850
 Wire Wire Line
 	5350 1950 6000 1950
-Wire Wire Line
-	2400 1050 2500 1050
-Wire Wire Line
-	2500 1050 2500 1450
-Wire Wire Line
-	2500 1450 1600 1450
-Wire Wire Line
-	1600 1450 1600 1700
 Text Label 4300 2500 2    50   ~ 0
 SPI_1_MOSI
 Text Label 4300 2400 2    50   ~ 0
@@ -161,19 +144,6 @@ Text Label 4300 2300 2    50   ~ 0
 SPI_1_CS
 Wire Wire Line
 	1200 950  1650 950 
-Wire Wire Line
-	1200 1050 1400 1050
-Wire Wire Line
-	1200 1150 1500 1150
-Wire Wire Line
-	1500 1150 1500 1900
-Wire Wire Line
-	1500 1900 1650 1900
-Connection ~ 1500 1150
-Wire Wire Line
-	1500 1150 1650 1150
-Wire Wire Line
-	1600 1700 1650 1700
 Wire Wire Line
 	1500 3450 1650 3450
 Wire Wire Line
@@ -188,13 +158,6 @@ Wire Wire Line
 	1600 3250 1650 3250
 Wire Wire Line
 	1650 3350 1400 3350
-Connection ~ 1400 1050
-Wire Wire Line
-	1400 1050 1650 1050
-Wire Wire Line
-	1650 1800 1400 1800
-Wire Wire Line
-	1400 1800 1400 1050
 $Comp
 L Regulator_Switching:LM2596S-5 U?
 U 1 1 5FD2508C
@@ -242,7 +205,7 @@ AR Path="/61C146B0/5FD250B3" Ref="C?"  Part="1"
 AR Path="/5FD250B3" Ref="C3"  Part="1" 
 F 0 "C3" H 3750 5400 50  0000 L CNN
 F 1 "100uF" H 3650 5300 50  0000 L CNN
-F 2 "Capacitor_SMD:CP_Elec_8x10" H 3650 5400 50  0001 C CNN
+F 2 "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm" H 3650 5400 50  0001 C CNN
 F 3 "~" H 3650 5400 50  0001 C CNN
 	1    3650 5400
 	1    0    0    -1  
@@ -304,7 +267,7 @@ AR Path="/61C146B0/5FD250D1" Ref="C?"  Part="1"
 AR Path="/5FD250D1" Ref="C5"  Part="1" 
 F 0 "C5" H 6238 5596 50  0000 L CNN
 F 1 "220uF" H 6238 5505 50  0000 L CNN
-F 2 "Capacitor_SMD:CP_Elec_8x10" H 6150 5550 50  0001 C CNN
+F 2 "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm" H 6150 5550 50  0001 C CNN
 F 3 "~" H 6150 5550 50  0001 C CNN
 	1    6150 5550
 	1    0    0    -1  
@@ -602,7 +565,7 @@ GLV-
 Text Label 9100 4350 2    50   ~ 0
 CANH
 Text Label 9100 4450 2    50   ~ 0
-CAN-
+CANL
 Text Notes 8800 4050 0    50   ~ 0
 VEHICLE CONNECTOR
 $Comp
@@ -628,7 +591,6 @@ Text Label 1200 1050 2    50   ~ 0
 SPI_1_CLK
 Text Label 1200 1150 2    50   ~ 0
 SPI_1_CS
-NoConn ~ 2300 1800
 Text Label 1200 2450 2    50   ~ 0
 SPI_2_MOSI
 Text Label 1200 2550 2    50   ~ 0
@@ -672,4 +634,55 @@ Wire Wire Line
 Wire Wire Line
 	3250 5500 3250 5750
 Connection ~ 3250 5750
+$Sheet
+S 4950 3150 1100 550 
+U 601826D3
+F0 "FAULT_LED" 50
+F1 "Fault_LED.sch" 50
+$EndSheet
+$Comp
+L Connector:Conn_01x06_Female J4
+U 1 1 6018608E
+P 9350 5100
+F 0 "J4" H 9378 5076 50  0000 L CNN
+F 1 "Conn_01x06_Female" H 9378 4985 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical" H 9350 5100 50  0001 C CNN
+F 3 "~" H 9350 5100 50  0001 C CNN
+	1    9350 5100
+	1    0    0    -1  
+$EndComp
+Text GLabel 9150 4900 0    50   Input ~ 0
+FAULT1
+Text GLabel 9150 5000 0    50   Input ~ 0
+FAULT2
+Text GLabel 9150 5100 0    50   Input ~ 0
+FAULT3
+Text GLabel 9150 5200 0    50   Input ~ 0
+FAULT4
+Text GLabel 9150 5300 0    50   Input ~ 0
+FAULT5
+Text GLabel 9150 5400 0    50   Input ~ 0
+FAULT6
+$Comp
+L Device:Polyfuse F2
+U 1 1 60187DB8
+P 6750 5350
+F 0 "F2" V 6525 5350 50  0000 C CNN
+F 1 "Polyfuse" V 6616 5350 50  0000 C CNN
+F 2 "Fuse:Fuse_2010_5025Metric" H 6800 5150 50  0001 L CNN
+F 3 "~" H 6750 5350 50  0001 C CNN
+	1    6750 5350
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6600 5350 6550 5350
+Wire Wire Line
+	6900 5350 7000 5350
+Text GLabel 7000 5350 2    50   Input ~ 0
+5Vfused
+Wire Wire Line
+	1200 1150 1650 1150
+Wire Wire Line
+	1200 1050 1650 1050
+NoConn ~ 2400 1050
 $EndSCHEMATC

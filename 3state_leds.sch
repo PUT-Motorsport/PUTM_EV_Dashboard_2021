@@ -1,9 +1,10 @@
 EESchema Schematic File Version 4
+LIBS:dash_hw-cache
 EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 8 9
+Sheet 7 9
 Title "PUTM_EV_Dashboard_2021"
 Date ""
 Rev ""

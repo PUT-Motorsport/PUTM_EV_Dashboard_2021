@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:dash_hw-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -880,7 +881,7 @@ U 1 1 5FF167F9
 P 6000 1700
 F 0 "U7" H 6000 2367 50  0000 C CNN
 F 1 "OPS-S5621" H 6000 2276 50  0000 C CNN
-F 2 "PUTM_EV_Dashboard_2021:OPS-S5621LB-GW" H 6000 1150 50  0001 C CNN
+F 2 "PUTMotorsport_footprints:0.56” Case Mold Type LED Display" H 6000 1150 50  0001 C CNN
 F 3 "https://docs.broadcom.com/docs/AV02-2553EN" H 6000 1700 50  0001 C CNN
 	1    6000 1700
 	1    0    0    -1  
@@ -891,7 +892,7 @@ U 1 1 5FF17FB7
 P 6000 3750
 F 0 "U8" H 6000 4417 50  0000 C CNN
 F 1 "OPS-S5621" H 6000 4326 50  0000 C CNN
-F 2 "PUTM_EV_Dashboard_2021:OPS-S5621LB-GW" H 6000 3200 50  0001 C CNN
+F 2 "PUTMotorsport_footprints:0.56” Case Mold Type LED Display" H 6000 3200 50  0001 C CNN
 F 3 "https://docs.broadcom.com/docs/AV02-2553EN" H 6000 3750 50  0001 C CNN
 	1    6000 3750
 	1    0    0    -1  
@@ -902,7 +903,7 @@ U 1 1 5FF18A68
 P 6000 6250
 F 0 "U9" H 6000 6917 50  0000 C CNN
 F 1 "OPS-S5621" H 6000 6826 50  0000 C CNN
-F 2 "PUTM_EV_Dashboard_2021:OPS-S5621LB-GW" H 6000 5700 50  0001 C CNN
+F 2 "PUTMotorsport_footprints:0.56” Case Mold Type LED Display" H 6000 5700 50  0001 C CNN
 F 3 "https://docs.broadcom.com/docs/AV02-2553EN" H 6000 6250 50  0001 C CNN
 	1    6000 6250
 	1    0    0    -1  

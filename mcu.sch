@@ -1,9 +1,10 @@
 EESchema Schematic File Version 4
+LIBS:dash_hw-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 9 9
+Sheet 8 9
 Title ""
 Date ""
 Rev ""

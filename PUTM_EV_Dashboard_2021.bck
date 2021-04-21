@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP OPS-S5621
-D One digit 7 segment, common cathode
-K display LED 7-segment
-F https://docs.broadcom.com/docs/AV02-2553EN
-$ENDCMP
-#
-#End Doc Library
