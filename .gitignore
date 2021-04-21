@@ -67,4 +67,6 @@ core
 .idea/
 cmake-build-debug/
 CMake*
+Makefile
+*.cmake
 TODO

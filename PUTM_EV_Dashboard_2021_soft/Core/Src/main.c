@@ -19,6 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include <utilities.h>
+#include <lcd_driver.h>
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -159,6 +160,12 @@ int main(void) {
     error = 0;
     ledArray = 0;
 
+
+    lcdInit();
+    lcdLocateCursor(0, 1);
+    lcdWriteString("asshole");
+    lcdLocateCursor(1, 2);
+    lcdWriteString("ASSHOLE");
     /* USER CODE END 2 */
 
     /* Infinite loop */
@@ -172,7 +179,7 @@ int main(void) {
                 // send data to 7seg displays
                 status |= send7Seg();
 
-                // send data to alfanum display
+                // TODO send data to alfanum display
                 status |= sendAlfaNum();
         }
 
@@ -582,6 +589,11 @@ void My_CAN_init(void) {
 void Error_Handler(void) {
     /* USER CODE BEGIN Error_Handler_Debug */
     /* User can add his own implementation to report the HAL error return state */
+
+    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+    while(1){
+        ;
+    }
 
     /* USER CODE END Error_Handler_Debug */
 }
