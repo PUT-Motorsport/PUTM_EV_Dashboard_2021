@@ -18,13 +18,12 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include <utilities.h>
-#include <lcd_driver.h>
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <utilities.h>
+#include <lcd_driver.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -173,17 +172,17 @@ int main(void) {
     while (1) {
         uint8_t status = 0;
         if (updateDisplays) {
-                // send data to LED
-                status |= sendLed();
+            // send data to LED
+            status |= sendLed();
 
-                // send data to 7seg displays
-                status |= send7Seg();
+            // send data to 7seg displays
+            status |= send7Seg();
 
-                // TODO send data to alfanum display
-                status |= sendAlfaNum();
+            // TODO send data to alfanum display
+            status |= sendAlfaNum();
         }
 
-        if (status){
+        if (status) {
             Error_Handler();
         }
 
@@ -591,8 +590,7 @@ void Error_Handler(void) {
     /* User can add his own implementation to report the HAL error return state */
 
     HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-    while(1){
-        ;
+    while (1) { ;
     }
 
     /* USER CODE END Error_Handler_Debug */

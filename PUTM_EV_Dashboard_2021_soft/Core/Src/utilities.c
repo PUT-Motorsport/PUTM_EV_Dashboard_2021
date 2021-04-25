@@ -29,16 +29,16 @@ extern uint64_t ledArray;
 extern uint32_t segDisplayArray;
 
 uint8_t digits[12] = {
-    0x00,     //  ZERO
-    0x00,     //  ONE
-    0x00,     //  TWO
-    0x00,     //  THREE
-    0x00,     //  FOUR
-    0x00,     //  FIVE
-    0x00,     //  SIX
-    0x00,     //  SEVEN
-    0x00,     //  EIGHT
-    0x00,     //  NINE
+    0x7E,     //  ZERO
+    0x60,     //  ONE
+    0x6D,     //  TWO
+    0x79,     //  THREE
+    0x33,     //  FOUR
+    0x5B,     //  FIVE
+    0x5F,     //  SIX
+    0x70,     //  SEVEN
+    0x7F,     //  EIGHT
+    0x7B,     //  NINE
     0x00,     //  NULL
     0x00      //  ERROR
 };
