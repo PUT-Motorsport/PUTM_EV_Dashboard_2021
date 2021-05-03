@@ -547,27 +547,14 @@ GLV+
 Text Label 1400 5900 2    50   ~ 0
 GLV-
 NoConn ~ 2300 3350
-$Comp
-L Connector_Generic:Conn_01x04 J1
-U 1 1 5FDE07F9
-P 9300 4350
-F 0 "J1" H 9380 4342 50  0000 L CNN
-F 1 "Conn_01x04" H 9380 4251 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 9300 4350 50  0001 C CNN
-F 3 "~" H 9300 4350 50  0001 C CNN
-	1    9300 4350
-	1    0    0    -1  
-$EndComp
-Text Label 9100 4250 2    50   ~ 0
+Text Label 9600 3800 2    50   ~ 0
 GLV+
-Text Label 9100 4550 2    50   ~ 0
+Text Label 9600 3900 2    50   ~ 0
 GLV-
-Text Label 9100 4350 2    50   ~ 0
+Text Label 9600 4050 2    50   ~ 0
 CANH
-Text Label 9100 4450 2    50   ~ 0
+Text Label 9600 4150 2    50   ~ 0
 CANL
-Text Notes 8800 4050 0    50   ~ 0
-VEHICLE CONNECTOR
 $Comp
 L Device:Q_PMOS_GSD Q1
 U 1 1 5FDF0E9D
@@ -685,4 +672,28 @@ Wire Wire Line
 Wire Wire Line
 	1200 1050 1650 1050
 NoConn ~ 2400 1050
+$Comp
+L Connector_Generic:Conn_01x02 J5
+U 1 1 6086EAEA
+P 9800 3800
+F 0 "J5" H 9880 3792 50  0000 L CNN
+F 1 "Conn_01x02" H 9880 3701 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 9800 3800 50  0001 C CNN
+F 3 "~" H 9800 3800 50  0001 C CNN
+	1    9800 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x02 J6
+U 1 1 6086F692
+P 9800 4050
+F 0 "J6" H 9880 4042 50  0000 L CNN
+F 1 "Conn_01x02" H 9880 3951 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 9800 4050 50  0001 C CNN
+F 3 "~" H 9800 4050 50  0001 C CNN
+	1    9800 4050
+	1    0    0    -1  
+$EndComp
+Text Notes 8000 3700 0    50   ~ 0
+VEHICLE CONNECTOR
 $EndSCHEMATC
