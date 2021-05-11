@@ -14,6 +14,7 @@ uint8_t sendLed();
 uint8_t send7Seg();
 uint8_t sendAlfaNum();
 uint8_t hvVoltageToPercent();
+uint8_t test();
 
 
 #endif //PUTM_EV_DASHBOARD_2021_SOFT_UTILITIES_H

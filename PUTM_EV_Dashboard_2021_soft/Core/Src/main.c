@@ -172,6 +172,7 @@ int main(void) {
     while (1) {
         uint8_t status = 0;
         if (updateDisplays) {
+#ifndef TEST
             // send data to LED
             status |= sendLed();
 
@@ -180,6 +181,9 @@ int main(void) {
 
             // TODO send data to alfanum display
             status |= sendAlfaNum();
+#else
+            ;
+#endif
         }
 
         if (status) {

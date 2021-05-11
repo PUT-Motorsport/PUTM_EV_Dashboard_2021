@@ -184,3 +184,7 @@ uint8_t send7Seg() {
 uint8_t sendAlfaNum() {
     return 0;
 }
+
+uint8_t test(){
+    return 0;
+}
