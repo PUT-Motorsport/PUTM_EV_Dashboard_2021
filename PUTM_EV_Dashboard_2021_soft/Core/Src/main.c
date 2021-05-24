@@ -161,10 +161,10 @@ int main(void) {
 
 
     lcdInit();
-    lcdLocateCursor(0, 1);
-    lcdWriteString("asshole");
-    lcdLocateCursor(1, 2);
-    lcdWriteString("ASSHOLE");
+    lcdMoveCursor(0, 0);
+    lcdWriteString("Hello");
+    lcdMoveCursor(1, 2);
+    lcdWriteString("Hey");
     /* USER CODE END 2 */
 
     /* Infinite loop */
