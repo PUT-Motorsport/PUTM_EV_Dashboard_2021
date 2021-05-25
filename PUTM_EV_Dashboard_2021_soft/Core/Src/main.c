@@ -182,7 +182,7 @@ int main(void) {
             // TODO send data to alfanum display
             status |= sendAlfaNum();
 #else
-            ;
+            test();
 #endif
         }
 

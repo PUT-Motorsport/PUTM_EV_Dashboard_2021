@@ -7,6 +7,20 @@
 #include "utilities.h"
 #include "barriers.h"
 
+#ifdef TEST
+
+uint8_t testRound = 0;
+uint8_t testSpeed = 0;
+uint8_t testLvVoltageState = 0;
+uint8_t testLvTempState = 0;
+uint8_t testHvVoltageState = 0;
+uint8_t testHvVoltageBigState = 1;
+uint8_t testHvTempState = 0;
+uint8_t testT1State = 0;
+uint8_t testT2State = 0;
+
+#endif
+
 extern SPI_HandleTypeDef hspi1;
 extern SPI_HandleTypeDef hspi2;
 
@@ -136,12 +150,17 @@ uint8_t prepareStates() {
         ledArray |= (1 << (WATER_T_2_OFFSET + 0));
     }
 
+    //HV Voltage big
+    //TODO
+
     return 0;
 }
 
 uint8_t sendLed() {
     uint8_t status = 0;
+#ifndef TEST
     prepareStates();
+#endif
     for (uint8_t i = 0; i < 8 && !status; i++) {
         status |= HAL_SPI_Transmit(&hspi1, (uint8_t*)(ledArray << (i * 8)), 1, 100);
     }
@@ -172,7 +191,9 @@ uint8_t prepareSegDisplay() {
 
 uint8_t send7Seg() {
     uint8_t status = 0;
+#ifndef TEST
     prepareSegDisplay();
+#endif
     for (uint8_t i = 0; i < 3 && !status; i++) {
         status |= HAL_SPI_Transmit(&hspi2, (uint8_t *) (segDisplayArray << i * 8), 1, 50);
     }
@@ -180,11 +201,50 @@ uint8_t send7Seg() {
     return status;
 }
 
-// TODO
+//TODO
 uint8_t sendAlfaNum() {
     return 0;
 }
 
+#ifdef TEST
+
 uint8_t test(){
+    testRound++;
+    testSpeed++;
+
+    if (testRound % TEST_INTERVAL == 0){
+        testLvVoltageState++;
+        testLvTempState++;
+        testHvVoltageState++;
+        testHvTempState++;
+        testT1State++;
+        testT2State++;
+    }
+
+    if (testLvTempState == 3){
+        testLvVoltageState = 0;
+        testLvTempState = 0;
+        testHvVoltageState = 0;
+        testHvTempState = 0;
+        testT1State = 0;
+        testT2State = 0;
+    }
+
+    ledArray |= (1 << (LV_VOLTAGE_OFFSET + testLvVoltageState));
+    ledArray |= (1 << (LV_TEMP_OFFSET + testLvTempState));
+    ledArray |= (1 << (HV_VOLTAGE_OFFSET + testHvVoltageState));
+    ledArray |= (1 << (HV_TEMP_OFFSET + testHvTempState));
+    ledArray |= (1 << (WATER_T_1_OFFSET + testT1State));
+    ledArray |= (1 << (WATER_T_2_OFFSET + testT2State));
+    //TODO
+    // HV VOLTAGE BIG
+
+    carSpeed = testSpeed;
+
+    send7Seg();
+    sendLed();
+
+    HAL_Delay(TEST_SLEEP);
     return 0;
 }
+#endif

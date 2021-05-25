@@ -70,3 +70,4 @@ CMakeLists_template.txt
 Makefile
 *.cmake
 TODO
+lcd_scheme
