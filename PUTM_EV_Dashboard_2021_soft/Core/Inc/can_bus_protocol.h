@@ -43,4 +43,7 @@
 
 #define WATER_T_2_BYTE  0x01
 
+#define LCD_BUTTON_ID   0x00
+#define LCD_BUTTON_BYTE 0x00
+
 #endif /* INC_CAN_BUS_PROTOCOL_H_ */

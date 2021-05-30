@@ -42,6 +42,10 @@ extern uint8_t speedOrHvPer;
 extern uint64_t ledArray;
 extern uint32_t segDisplayArray;
 
+uint8_t lcdPage = 0;
+char* lcdStringRows1[3] = {"hello1", "hey1", "hi1"};
+char* lcdStringRows2[3] = {"hello2", "hey2", "hi2"};
+
 uint8_t digits[12] = {
     0x7E,     //  ZERO
     0x60,     //  ONE
