@@ -6,6 +6,7 @@
 #include "main.h"
 #include "utilities.h"
 #include "barriers.h"
+#include "lcd_driver.h"
 
 #ifdef TEST
 
@@ -43,24 +44,27 @@ extern uint64_t ledArray;
 extern uint32_t segDisplayArray;
 
 uint8_t lcdPage = 0;
-char* lcdStringRows1[3] = {"hello1", "hey1", "hi1"};
-char* lcdStringRows2[3] = {"hello2", "hey2", "hi2"};
+char *lcdStringRow0Up = "HV  %3d  TW1  %2d";
+char *lcdStringRow0Low = "LV  %3d  TW2  %2d";
+char *lcdStringRow1Up = "LAP              ";
+char *lcdStringRow1Low = "                 ";
+char *lcdStringRow2Up = "NOP              ";
+char *lcdStringRow2Low = "                 ";
 
 uint8_t digits[12] = {
-    0x7E,     //  ZERO
-    0x60,     //  ONE
-    0x6D,     //  TWO
-    0x79,     //  THREE
-    0x33,     //  FOUR
-    0x5B,     //  FIVE
-    0x5F,     //  SIX
-    0x70,     //  SEVEN
-    0x7F,     //  EIGHT
-    0x7B,     //  NINE
-    0x00,     //  NULL
-    0x00      //  ERROR
+        0x7E,     //  ZERO
+        0x60,     //  ONE
+        0x6D,     //  TWO
+        0x79,     //  THREE
+        0x33,     //  FOUR
+        0x5B,     //  FIVE
+        0x5F,     //  SIX
+        0x70,     //  SEVEN
+        0x7F,     //  EIGHT
+        0x7B,     //  NINE
+        0x00,     //  NULL
+        0x00      //  ERROR
 };
-
 
 
 uint8_t prepareStates() {
@@ -166,7 +170,7 @@ uint8_t sendLed() {
     prepareStates();
 #endif
     for (uint8_t i = 0; i < 8 && !status; i++) {
-        status |= HAL_SPI_Transmit(&hspi1, (uint8_t*)(ledArray << (i * 8)), 1, 100);
+        status |= HAL_SPI_Transmit(&hspi1, (uint8_t *) (ledArray << (i * 8)), 1, 100);
     }
 
     return status;
@@ -205,27 +209,64 @@ uint8_t send7Seg() {
     return status;
 }
 
-//TODO
 uint8_t sendAlfaNum() {
+    lcdClear();
+    if (lcdPage == 0) {
+        char temp[16] = {};
+        snprintf(temp, 16, lcdStringRow0Up, (uint8_t) hvVoltageToPercent(), (uint8_t) waterTemp1);
+        lcdMoveCursor(0, 0);
+        lcdWriteString(temp);
+
+        snprintf(temp, 16, lcdStringRow0Low, (uint8_t) lvVoltage, (uint8_t) waterTemp2);
+        lcdMoveCursor(1, 0);
+        lcdWriteString(temp);
+    } else if (lcdPage == 1) {
+        char temp[16] = {};
+        snprintf(temp, 16, lcdStringRow1Up, (uint8_t) hvVoltageToPercent(), (uint8_t) waterTemp1);
+        lcdMoveCursor(0, 0);
+        lcdWriteString(temp);
+
+        snprintf(temp, 16, lcdStringRow1Low, (uint8_t) lvVoltage, (uint8_t) waterTemp2);
+        lcdMoveCursor(1, 0);
+        lcdWriteString(temp);
+    } else if (lcdPage == 2) {
+        char temp[16] = {};
+        snprintf(temp, 16, lcdStringRow2Up, (uint8_t) hvVoltageToPercent(), (uint8_t) waterTemp1);
+        lcdMoveCursor(0, 0);
+        lcdWriteString(temp);
+
+        snprintf(temp, 16, lcdStringRow2Low, (uint8_t) lvVoltage, (uint8_t) waterTemp2);
+        lcdMoveCursor(1, 0);
+        lcdWriteString(temp);
+    }
     return 0;
 }
 
 #ifdef TEST
 
-uint8_t test(){
+uint8_t test() {
     testRound++;
     testSpeed++;
 
-    if (testRound % TEST_INTERVAL == 0){
+    if (testRound % TEST_INTERVAL == 0) {
         testLvVoltageState++;
         testLvTempState++;
         testHvVoltageState++;
         testHvTempState++;
         testT1State++;
         testT2State++;
+
+        char temp[16];
+        sprintf(temp, "%d %d %d %d %d %d %d %d", (testRound + 0) % 10, (testRound + 1) % 10, (testRound + 2) % 9, (testRound  + 3) % 9,
+                (testRound + 4) % 10, (testRound + 5) % 10, (testRound + 6) % 10, (testRound + 7) % 10);
+        lcdClear();
+        lcdMoveCursor(0, 0);
+        lcdWriteString(temp);
+        lcdMoveCursor(1, 0);
+        lcdWriteString(temp);
     }
 
-    if (testLvTempState == 3){
+    if (testLvTempState == 3) {
         testLvVoltageState = 0;
         testLvTempState = 0;
         testHvVoltageState = 0;
@@ -251,4 +292,5 @@ uint8_t test(){
     HAL_Delay(TEST_SLEEP);
     return 0;
 }
+
 #endif

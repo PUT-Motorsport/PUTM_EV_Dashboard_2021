@@ -179,7 +179,7 @@ int main(void) {
             // send data to 7seg displays
             status |= send7Seg();
 
-            // TODO send data to alfanum display
+            // send data to alfanum display
             status |= sendAlfaNum();
 #else
             test();
