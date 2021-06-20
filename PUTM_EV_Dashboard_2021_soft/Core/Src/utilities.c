@@ -220,7 +220,8 @@ uint8_t sendAlfaNum() {
         snprintf(temp, 16, lcdStringRow0Low, (uint8_t) lvVoltage, (uint8_t) waterTemp2);
         lcdMoveCursor(1, 0);
         lcdWriteString(temp);
-    } else if (lcdPage == 1) {
+    }
+    else if (lcdPage == 1) {
         char temp[16] = {};
         snprintf(temp, 16, lcdStringRow1Up, (uint8_t) hvVoltageToPercent(), (uint8_t) waterTemp1);
         lcdMoveCursor(0, 0);
@@ -229,7 +230,8 @@ uint8_t sendAlfaNum() {
         snprintf(temp, 16, lcdStringRow1Low, (uint8_t) lvVoltage, (uint8_t) waterTemp2);
         lcdMoveCursor(1, 0);
         lcdWriteString(temp);
-    } else if (lcdPage == 2) {
+    }
+    else if (lcdPage == 2) {
         char temp[16] = {};
         snprintf(temp, 16, lcdStringRow2Up, (uint8_t) hvVoltageToPercent(), (uint8_t) waterTemp1);
         lcdMoveCursor(0, 0);
