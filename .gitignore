@@ -51,11 +51,9 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-*/Drivers/
 */Debug/
 */.project
 */.mxproject
-*.ld
 *.launch
 *.cfg
 .cproject
@@ -64,3 +62,10 @@ core
 
 *.zip
 
+.idea/
+cmake-build-*/
+CMakeLists_template.txt
+Makefile
+*.cmake
+TODO
+lcd_scheme
