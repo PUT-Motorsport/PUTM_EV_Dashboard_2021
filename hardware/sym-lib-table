@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name dash_hw-rescue)(type Legacy)(uri ${KIPRJMOD}/dash_hw-rescue.lib)(options "")(descr ""))
+  (lib (name PUTM_EV_Dashboard_2021)(type Legacy)(uri ${KIPRJMOD}/PUTM_EV_Dashboard_2021.lib)(options "")(descr ""))
+)
