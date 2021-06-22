@@ -41,5 +41,7 @@
 #define WATER_T_2_HIGH      0
 #define WATER_T_2_OFFSET    0
 
+#define HV_BIG_VOL_OFFSET   0
+
 
 #endif //PUTM_EV_DASHBOARD_2021_SOFT_BARRIERS_H
