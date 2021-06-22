@@ -71,7 +71,7 @@ extern float lvTempAvg;
 extern float lvTempMax;
 extern uint8_t lvState;
 
-extern float hvVoltage;
+extern uint8_t hvVoltage;
 extern float hvTempAvg;
 extern float hvTempMax;
 extern uint8_t hvState;
@@ -252,7 +252,7 @@ void USB_LP_CAN1_RX0_IRQHandler(void) {
             lvState = RxData[LV_STATE_BYTE];
         }
         if (RxHeader->StdId == HV_VOLTAGE_ID) {
-            hvVoltage = (float) RxData[HV_VOLTAGE_BYTE] / 10.0f;
+            hvVoltage = RxData[HV_VOLTAGE_BYTE];
         }
         if (RxHeader->StdId == HV_TEMP_A_ID) {
             hvTempAvg = (float) RxData[HV_TEMP_A_BYTE] / 10.0f;

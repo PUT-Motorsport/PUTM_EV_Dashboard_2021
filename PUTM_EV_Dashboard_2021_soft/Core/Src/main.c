@@ -68,7 +68,7 @@ float lvTempAvg;
 float lvTempMax;
 uint8_t lvState;
 
-float hvVoltage;
+uint8_t hvVoltage;
 float hvTempAvg;
 float hvTempMax;
 uint8_t hvState;

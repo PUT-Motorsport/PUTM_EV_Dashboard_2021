@@ -30,7 +30,7 @@ extern float lvTempAvg;
 extern float lvTempMax;
 extern uint8_t lvState;
 
-extern float hvVoltage;
+extern uint8_t hvVoltage;
 extern float hvTempAvg;
 extern float hvTempMax;
 extern uint8_t hvState;
@@ -71,90 +71,114 @@ uint8_t prepareStates() {
     // LV Voltage
     if (lvVoltage > LV_VOLTAGE_HIGH) {
         ledArray |= (1 << (LV_VOLTAGE_OFFSET + 2));
-    } else if (lvVoltage < LV_VOLTAGE_HIGH && lvVoltage > LV_VOLTAGE_MID) {
+    }
+    else if (lvVoltage < LV_VOLTAGE_HIGH && lvVoltage > LV_VOLTAGE_MID) {
         ledArray |= (1 << (LV_VOLTAGE_OFFSET + 2));
         ledArray |= (1 << (LV_VOLTAGE_OFFSET + 1));
-    } else if (lvVoltage < LV_VOLTAGE_MID && lvVoltage > LV_VOLTAGE_LOW) {
+    }
+    else if (lvVoltage < LV_VOLTAGE_MID && lvVoltage > LV_VOLTAGE_LOW) {
         ledArray |= (1 << (LV_VOLTAGE_OFFSET + 1));
-    } else if (lvVoltage < LV_VOLTAGE_LOW && lvVoltage > LV_VOLTAGE_ALARM) {
+    }
+    else if (lvVoltage < LV_VOLTAGE_LOW && lvVoltage > LV_VOLTAGE_ALARM) {
         ledArray |= (1 << (LV_VOLTAGE_OFFSET + 1));
         ledArray |= (1 << (LV_VOLTAGE_OFFSET + 0));
-    } else if (lvVoltage < LV_VOLTAGE_ALARM) {
+    }
+    else if (lvVoltage < LV_VOLTAGE_ALARM) {
         ledArray |= (1 << (LV_VOLTAGE_OFFSET + 0));
     }
 
     // LV Temperature
     if (lvTempAvg > LV_TEMP_HIGH) {
         ledArray |= (1 << (LV_TEMP_OFFSET + 2));
-    } else if (lvTempAvg < LV_TEMP_HIGH && lvTempAvg > LV_TEMP_MID) {
+    }
+    else if (lvTempAvg < LV_TEMP_HIGH && lvTempAvg > LV_TEMP_MID) {
         ledArray |= (1 << (LV_TEMP_OFFSET + 2));
         ledArray |= (1 << (LV_TEMP_OFFSET + 1));
-    } else if (lvTempAvg < LV_TEMP_MID && lvTempAvg > LV_TEMP_LOW) {
+    }
+    else if (lvTempAvg < LV_TEMP_MID && lvTempAvg > LV_TEMP_LOW) {
         ledArray |= (1 << (LV_TEMP_OFFSET + 1));
-    } else if (lvTempAvg < LV_TEMP_LOW && lvTempAvg > LV_TEMP_ALARM) {
+    }
+    else if (lvTempAvg < LV_TEMP_LOW && lvTempAvg > LV_TEMP_ALARM) {
         ledArray |= (1 << (LV_TEMP_OFFSET + 1));
         ledArray |= (1 << (LV_TEMP_OFFSET + 0));
-    } else if (lvTempAvg < LV_TEMP_ALARM) {
+    }
+    else if (lvTempAvg < LV_TEMP_ALARM) {
         ledArray |= (1 << (LV_TEMP_OFFSET + 0));
     }
 
     // HV Voltage
     if (hvVoltage > HV_VOLTAGE_HIGH) {
         ledArray |= (1 << (HV_VOLTAGE_OFFSET + 2));
-    } else if (hvVoltage < HV_VOLTAGE_HIGH && hvVoltage > HV_VOLTAGE_MID) {
+    }
+    else if (hvVoltage < HV_VOLTAGE_HIGH && hvVoltage > HV_VOLTAGE_MID) {
         ledArray |= (1 << (HV_VOLTAGE_OFFSET + 2));
         ledArray |= (1 << (HV_VOLTAGE_OFFSET + 1));
-    } else if (hvVoltage < HV_VOLTAGE_MID && hvVoltage > HV_VOLTAGE_LOW) {
+    }
+    else if (hvVoltage < HV_VOLTAGE_MID && hvVoltage > HV_VOLTAGE_LOW) {
         ledArray |= (1 << (HV_VOLTAGE_OFFSET + 1));
-    } else if (hvVoltage < HV_VOLTAGE_LOW && hvVoltage > HV_VOLTAGE_ALARM) {
+    }
+    else if (hvVoltage < HV_VOLTAGE_LOW && hvVoltage > HV_VOLTAGE_ALARM) {
         ledArray |= (1 << (HV_VOLTAGE_OFFSET + 1));
         ledArray |= (1 << (HV_VOLTAGE_OFFSET + 0));
-    } else if (hvVoltage < HV_VOLTAGE_ALARM) {
+    }
+    else if (hvVoltage < HV_VOLTAGE_ALARM) {
         ledArray |= (1 << (HV_VOLTAGE_OFFSET + 0));
     }
 
     // HV Temperature
     if (hvTempAvg > HV_TEMP_HIGH) {
         ledArray |= (1 << (HV_TEMP_OFFSET + 2));
-    } else if (hvTempAvg < HV_TEMP_HIGH && hvTempAvg > HV_TEMP_MID) {
+    }
+    else if (hvTempAvg < HV_TEMP_HIGH && hvTempAvg > HV_TEMP_MID) {
         ledArray |= (1 << (HV_TEMP_OFFSET + 2));
         ledArray |= (1 << (HV_TEMP_OFFSET + 1));
-    } else if (hvTempAvg < HV_TEMP_MID && hvTempAvg > HV_TEMP_LOW) {
+    }
+    else if (hvTempAvg < HV_TEMP_MID && hvTempAvg > HV_TEMP_LOW) {
         ledArray |= (1 << (HV_TEMP_OFFSET + 1));
-    } else if (hvTempAvg < HV_TEMP_LOW && hvTempAvg > HV_TEMP_ALARM) {
+    }
+    else if (hvTempAvg < HV_TEMP_LOW && hvTempAvg > HV_TEMP_ALARM) {
         ledArray |= (1 << (HV_TEMP_OFFSET + 1));
         ledArray |= (1 << (HV_TEMP_OFFSET + 0));
-    } else if (hvTempAvg < HV_TEMP_ALARM) {
+    }
+    else if (hvTempAvg < HV_TEMP_ALARM) {
         ledArray |= (1 << (HV_TEMP_OFFSET + 0));
     }
 
     // Water Temperature 1
     if (waterTemp1 > WATER_T_1_HIGH) {
         ledArray |= (1 << (WATER_T_1_OFFSET + 2));
-    } else if (waterTemp1 < WATER_T_1_HIGH && waterTemp1 > WATER_T_1_MID) {
+    }
+    else if (waterTemp1 < WATER_T_1_HIGH && waterTemp1 > WATER_T_1_MID) {
         ledArray |= (1 << (WATER_T_1_OFFSET + 2));
         ledArray |= (1 << (WATER_T_1_OFFSET + 1));
-    } else if (waterTemp1 < WATER_T_1_MID && waterTemp1 > WATER_T_1_LOW) {
+    }
+    else if (waterTemp1 < WATER_T_1_MID && waterTemp1 > WATER_T_1_LOW) {
         ledArray |= (1 << (WATER_T_1_OFFSET + 1));
-    } else if (waterTemp1 < WATER_T_1_LOW && waterTemp1 > WATER_T_1_ALARM) {
+    }
+    else if (waterTemp1 < WATER_T_1_LOW && waterTemp1 > WATER_T_1_ALARM) {
         ledArray |= (1 << (WATER_T_1_OFFSET + 1));
         ledArray |= (1 << (WATER_T_1_OFFSET + 0));
-    } else if (waterTemp1 < WATER_T_1_ALARM) {
+    }
+    else if (waterTemp1 < WATER_T_1_ALARM) {
         ledArray |= (1 << (WATER_T_1_OFFSET + 0));
     }
 
     // Water Temperature 2
     if (waterTemp2 > WATER_T_2_HIGH) {
         ledArray |= (1 << (WATER_T_2_OFFSET + 2));
-    } else if (waterTemp2 < WATER_T_2_HIGH && waterTemp1 > WATER_T_2_MID) {
+    }
+    else if (waterTemp2 < WATER_T_2_HIGH && waterTemp1 > WATER_T_2_MID) {
         ledArray |= (1 << (WATER_T_2_OFFSET + 2));
         ledArray |= (1 << (WATER_T_2_OFFSET + 1));
-    } else if (waterTemp2 < WATER_T_2_MID && waterTemp1 > WATER_T_2_LOW) {
+    }
+    else if (waterTemp2 < WATER_T_2_MID && waterTemp1 > WATER_T_2_LOW) {
         ledArray |= (1 << (WATER_T_2_OFFSET + 1));
-    } else if (waterTemp2 < WATER_T_2_LOW && waterTemp1 > WATER_T_2_ALARM) {
+    }
+    else if (waterTemp2 < WATER_T_2_LOW && waterTemp1 > WATER_T_2_ALARM) {
         ledArray |= (1 << (WATER_T_2_OFFSET + 1));
         ledArray |= (1 << (WATER_T_2_OFFSET + 0));
-    } else if (waterTemp2 < WATER_T_2_ALARM) {
+    }
+    else if (waterTemp2 < WATER_T_2_ALARM) {
         ledArray |= (1 << (WATER_T_2_OFFSET + 0));
     }
 
@@ -186,7 +210,8 @@ uint8_t prepareSegDisplay() {
         segDisplayArray |= digits[carSpeed / 100] << 16;
         segDisplayArray |= digits[carSpeed % 100 / 10] << 8;
         segDisplayArray |= digits[carSpeed % 10];
-    } else {
+    }
+    else {
         // HV %
         uint8_t hvVoltagePer = hvVoltageToPercent();
         segDisplayArray |= digits[10] << 16;
@@ -203,7 +228,7 @@ uint8_t send7Seg() {
     prepareSegDisplay();
 #endif
     for (uint8_t i = 0; i < 3 && !status; i++) {
-        status |= HAL_SPI_Transmit(&hspi2, (uint8_t *) (segDisplayArray << i * 8), 1, 50);
+        status |= HAL_SPI_Transmit(&hspi2, (uint8_t *) (segDisplayArray << (i * 8)), 1, 50);
     }
 
     return status;
