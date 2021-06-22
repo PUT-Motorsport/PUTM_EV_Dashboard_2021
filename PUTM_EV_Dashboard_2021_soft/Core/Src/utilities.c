@@ -183,7 +183,15 @@ uint8_t prepareStates() {
     }
 
     //HV Voltage big
-    //TODO
+    uint16_t hvLedTemp = UINT16_MAX;
+    uint8_t hvVolTemp = hvVoltage;
+
+    while (hvVolTemp <= 100){
+        hvVolTemp += 6;
+        hvLedTemp >>= 1;
+    }
+
+    ledArray |= ((uint64_t)hvLedTemp << HV_BIG_VOL_OFFSET);
 
     return 0;
 }
@@ -308,8 +316,16 @@ uint8_t test() {
     ledArray |= (1 << (HV_TEMP_OFFSET + testHvTempState));
     ledArray |= (1 << (WATER_T_1_OFFSET + testT1State));
     ledArray |= (1 << (WATER_T_2_OFFSET + testT2State));
-    //TODO
-    // HV VOLTAGE BIG
+
+    uint16_t hvLedTemp = UINT16_MAX;
+    uint8_t hvVolTemp = testRound % 100;
+
+    while (hvVolTemp <= 100){
+        hvVolTemp += 6;
+        hvLedTemp >>= 1;
+    }
+
+    ledArray |= ((uint64_t)hvLedTemp << HV_BIG_VOL_OFFSET);
 
     carSpeed = testSpeed;
 
