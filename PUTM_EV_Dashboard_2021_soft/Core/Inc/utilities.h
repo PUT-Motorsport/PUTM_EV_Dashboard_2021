@@ -16,8 +16,8 @@ uint8_t sendAlfaNum();
 uint8_t hvVoltageToPercent();
 
 #ifdef TEST
-    #define TEST_INTERVAL   5
-    #define TEST_SLEEP      30
+    #define TEST_INTERVAL   10
+    #define TEST_SLEEP      100
 
     uint8_t test();
 #endif

@@ -5,7 +5,7 @@
 //#include <stm32f1xx_hal.h>
 #include "main.h"
 #include "utilities.h"
-#include "barriers.h"
+#include "common.h"
 #include "lcd_driver.h"
 
 #ifdef TEST
@@ -40,8 +40,9 @@ extern float waterTemp2;
 extern uint8_t carSpeed;
 
 extern uint8_t speedOrHvPer;
-extern uint64_t ledArray;
+extern uint32_t ledArray;
 extern uint32_t segDisplayArray;
+uint8_t tempSegDisplayArray[3];
 
 uint8_t lcdPage = 0;
 char *lcdStringRow0Up = "HV  %3d  TW1  %2d";
@@ -201,8 +202,8 @@ uint8_t sendLed() {
 #ifndef TEST
     prepareStates();
 #endif
-    for (uint8_t i = 0; i < 8 && !status; i++) {
-        status |= HAL_SPI_Transmit(&hspi1, (uint8_t *) (ledArray << (i * 8)), 1, 100);
+    for (uint8_t i = 0; i < 4 && !status; i++) {
+        status |= HAL_SPI_Transmit(&hspi1, (uint8_t *) (ledArray >> (i * 8) & 0xFF), 1, 100);
     }
 
     return status;
@@ -215,9 +216,12 @@ uint8_t hvVoltageToPercent() {
 uint8_t prepareSegDisplay() {
     if (speedOrHvPer) {
         // Speed
-        segDisplayArray |= digits[carSpeed / 100] << 16;
-        segDisplayArray |= digits[carSpeed % 100 / 10] << 8;
-        segDisplayArray |= digits[carSpeed % 10];
+//        segDisplayArray |= digits[carSpeed / 100] << 16;
+//        segDisplayArray |= digits[carSpeed % 100 / 10] << 8;
+//        segDisplayArray |= digits[carSpeed % 10];
+        tempSegDisplayArray[0] = digits[carSpeed / 100] << 16;
+        tempSegDisplayArray[1] = digits[carSpeed % 100 / 10] << 8;
+        tempSegDisplayArray[2] = digits[carSpeed % 10];
     }
     else {
         // HV %
@@ -232,12 +236,8 @@ uint8_t prepareSegDisplay() {
 
 uint8_t send7Seg() {
     uint8_t status = 0;
-#ifndef TEST
     prepareSegDisplay();
-#endif
-    for (uint8_t i = 0; i < 3 && !status; i++) {
-        status |= HAL_SPI_Transmit(&hspi2, (uint8_t *) (segDisplayArray << (i * 8)), 1, 50);
-    }
+    status |= HAL_SPI_Transmit(&hspi2, tempSegDisplayArray, 3, 200);
 
     return status;
 }
@@ -280,6 +280,7 @@ uint8_t sendAlfaNum() {
 #ifdef TEST
 
 uint8_t test() {
+    speedOrHvPer = 1;
     testRound++;
     testSpeed++;
 
@@ -310,12 +311,12 @@ uint8_t test() {
         testT2State = 0;
     }
 
-    ledArray |= (1 << (LV_VOLTAGE_OFFSET + testLvVoltageState));
-    ledArray |= (1 << (LV_TEMP_OFFSET + testLvTempState));
-    ledArray |= (1 << (HV_VOLTAGE_OFFSET + testHvVoltageState));
-    ledArray |= (1 << (HV_TEMP_OFFSET + testHvTempState));
-    ledArray |= (1 << (WATER_T_1_OFFSET + testT1State));
-    ledArray |= (1 << (WATER_T_2_OFFSET + testT2State));
+//    ledArray |= (1 << (LV_VOLTAGE_OFFSET + testLvVoltageState));
+//    ledArray |= (1 << (LV_TEMP_OFFSET + testLvTempState));
+//    ledArray |= (1 << (HV_VOLTAGE_OFFSET + testHvVoltageState));
+//    ledArray |= (1 << (HV_TEMP_OFFSET + testHvTempState));
+//    ledArray |= (1 << (WATER_T_1_OFFSET + testT1State));
+//    ledArray |= (1 << (WATER_T_2_OFFSET + testT2State));
 
     uint16_t hvLedTemp = UINT16_MAX;
     uint8_t hvVolTemp = testRound % 100;

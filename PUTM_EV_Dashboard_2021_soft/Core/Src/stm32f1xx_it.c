@@ -24,6 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "can_bus_protocol.h"
+#include "common.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -81,6 +82,11 @@ extern float waterTemp2;
 extern uint8_t carSpeed;
 
 extern uint8_t lcdPage;
+
+extern uint8_t updateDisplays;
+extern uint8_t speedOrHvPer;
+extern uint32_t changeSegTimeStamp;
+
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -273,6 +279,12 @@ void USB_LP_CAN1_RX0_IRQHandler(void) {
                 if (lcdPage == 3) lcdPage = 0;
             }
         }
+        if (RxHeader->StdId == SEG_BUTTON_ID){
+            if (RxData[SEG_BUTTON_BYTE]){
+                speedOrHvPer |= 1;
+                changeSegTimeStamp = HAL_GetTick();
+            }
+        }
     }
     /* USER CODE END USB_LP_CAN1_RX0_IRQn 0 */
     HAL_CAN_IRQHandler(&hcan);
@@ -286,6 +298,14 @@ void USB_LP_CAN1_RX0_IRQHandler(void) {
   */
 void TIM2_IRQHandler(void) {
     /* USER CODE BEGIN TIM2_IRQn 0 */
+
+    updateDisplays = 1;
+
+    if (speedOrHvPer){
+        if (HAL_GetTick() > changeSegTimeStamp + HV_PERCENTAGE_TIME_MAX){
+            speedOrHvPer = 0;
+        }
+    }
 
     /* USER CODE END TIM2_IRQn 0 */
     HAL_TIM_IRQHandler(&htim2);

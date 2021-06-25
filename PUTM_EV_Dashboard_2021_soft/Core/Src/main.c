@@ -78,9 +78,10 @@ float waterTemp2;
 
 uint8_t updateDisplays;
 uint8_t speedOrHvPer;
+uint32_t changeSegTimeStamp;
 uint8_t error;
 
-uint64_t ledArray;
+uint32_t ledArray;
 uint32_t segDisplayArray;
 
 /* USER CODE END PV */
@@ -154,6 +155,9 @@ int main(void) {
 
     My_CAN_init();
 
+    HAL_TIM_Base_Start_IT(&htim2);
+    HAL_TIM_Base_Start_IT(&htim3);
+
     updateDisplays = 0;
     speedOrHvPer = 0;
     error = 0;
@@ -184,6 +188,7 @@ int main(void) {
 #else
             test();
 #endif
+            updateDisplays = 0;
         }
 
         if (status) {
