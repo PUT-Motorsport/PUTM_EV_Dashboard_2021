@@ -53,7 +53,7 @@ char *lcdStringRow1Low = "                 ";
 char *lcdStringRow2Up = "NOP              ";
 char *lcdStringRow2Low = "                 ";
 
-uint8_t digits[12] = {
+const uint8_t digits[12] = {
         0x3F,     //  ZERO
         0x06,     //  ONE
         0x5B,     //  TWO
@@ -68,120 +68,110 @@ uint8_t digits[12] = {
         0x00      //  ERROR
 };
 
+const uint8_t hvBigLedShift[16] = {23, 22, 21, 20, 19, 18, 17, 16, 31, 30, 29, 28, 27, 26, 25, 24};
+
 
 uint8_t prepareStates() {
     // LV Voltage
     if (lvVoltage > LV_VOLTAGE_HIGH) {
-        ledArray1 |= (1 << (LV_VOLTAGE_OFFSET + 2));
+        ledArray1 |= (1 << LV_VOLTAGE_LED_3);
+        ledArray1 |= (1 << LV_VOLTAGE_LED_2);
+        ledArray1 |= (1 << LV_VOLTAGE_LED_1);
     }
-    else if (lvVoltage < LV_VOLTAGE_HIGH && lvVoltage > LV_VOLTAGE_MID) {
-        ledArray1 |= (1 << (LV_VOLTAGE_OFFSET + 2));
-        ledArray1 |= (1 << (LV_VOLTAGE_OFFSET + 1));
+    else if (lvVoltage < LV_VOLTAGE_HIGH && lvVoltage >= LV_VOLTAGE_MID) {
+        ledArray1 |= (1 << LV_VOLTAGE_LED_2);
+        ledArray1 |= (1 << LV_VOLTAGE_LED_1);
     }
-    else if (lvVoltage < LV_VOLTAGE_MID && lvVoltage > LV_VOLTAGE_LOW) {
-        ledArray1 |= (1 << (LV_VOLTAGE_OFFSET + 1));
-    }
-    else if (lvVoltage < LV_VOLTAGE_LOW && lvVoltage > LV_VOLTAGE_ALARM) {
-        ledArray1 |= (1 << (LV_VOLTAGE_OFFSET + 1));
-        ledArray1 |= (1 << (LV_VOLTAGE_OFFSET + 0));
+    else if (lvVoltage < LV_VOLTAGE_MID && lvVoltage >= LV_VOLTAGE_LOW) {
+        ledArray1 |= (1 << LV_VOLTAGE_LED_1);
     }
     else if (lvVoltage < LV_VOLTAGE_ALARM) {
-        ledArray1 |= (1 << (LV_VOLTAGE_OFFSET + 0));
+        ;
     }
 
     // LV Temperature
     if (lvTempAvg > LV_TEMP_HIGH) {
-        ledArray1 |= (1 << (LV_TEMP_OFFSET + 2));
+        ledArray1 |= (1 << LV_TEMP_LED_3);
+        ledArray1 |= (1 << LV_TEMP_LED_2);
+        ledArray1 |= (1 << LV_TEMP_LED_1);
     }
-    else if (lvTempAvg < LV_TEMP_HIGH && lvTempAvg > LV_TEMP_MID) {
-        ledArray1 |= (1 << (LV_TEMP_OFFSET + 2));
-        ledArray1 |= (1 << (LV_TEMP_OFFSET + 1));
+    else if (lvTempAvg < LV_TEMP_HIGH && lvTempAvg >= LV_TEMP_MID) {
+        ledArray1 |= (1 << LV_TEMP_LED_2);
+        ledArray1 |= (1 << LV_TEMP_LED_1);
     }
-    else if (lvTempAvg < LV_TEMP_MID && lvTempAvg > LV_TEMP_LOW) {
-        ledArray1 |= (1 << (LV_TEMP_OFFSET + 1));
-    }
-    else if (lvTempAvg < LV_TEMP_LOW && lvTempAvg > LV_TEMP_ALARM) {
-        ledArray1 |= (1 << (LV_TEMP_OFFSET + 1));
-        ledArray1 |= (1 << (LV_TEMP_OFFSET + 0));
+    else if (lvTempAvg < LV_TEMP_MID && lvTempAvg >= LV_TEMP_LOW) {
+        ledArray1 |= (1 << LV_TEMP_LED_1);
     }
     else if (lvTempAvg < LV_TEMP_ALARM) {
-        ledArray1 |= (1 << (LV_TEMP_OFFSET + 0));
+        ;
     }
 
     // HV Voltage
     if (hvVoltage > HV_VOLTAGE_HIGH) {
-        ledArray1 |= (1 << (HV_VOLTAGE_OFFSET + 2));
+        ledArray1 |= (1 << HV_VOLTAGE_LED_3);
+        ledArray1 |= (1 << HV_VOLTAGE_LED_2);
+        ledArray1 |= (1 << HV_VOLTAGE_LED_1);
     }
-    else if (hvVoltage < HV_VOLTAGE_HIGH && hvVoltage > HV_VOLTAGE_MID) {
-        ledArray1 |= (1 << (HV_VOLTAGE_OFFSET + 2));
-        ledArray1 |= (1 << (HV_VOLTAGE_OFFSET + 1));
+    else if (hvVoltage < HV_VOLTAGE_HIGH && hvVoltage >= HV_VOLTAGE_MID) {
+        ledArray1 |= (1 << HV_VOLTAGE_LED_2);
+        ledArray1 |= (1 << HV_VOLTAGE_LED_1);
     }
-    else if (hvVoltage < HV_VOLTAGE_MID && hvVoltage > HV_VOLTAGE_LOW) {
-        ledArray1 |= (1 << (HV_VOLTAGE_OFFSET + 1));
-    }
-    else if (hvVoltage < HV_VOLTAGE_LOW && hvVoltage > HV_VOLTAGE_ALARM) {
-        ledArray1 |= (1 << (HV_VOLTAGE_OFFSET + 1));
-        ledArray1 |= (1 << (HV_VOLTAGE_OFFSET + 0));
+    else if (hvVoltage < HV_VOLTAGE_MID && hvVoltage >= HV_VOLTAGE_LOW) {
+        ledArray1 |= (1 << HV_VOLTAGE_LED_1);
     }
     else if (hvVoltage < HV_VOLTAGE_ALARM) {
-        ledArray1 |= (1 << (HV_VOLTAGE_OFFSET + 0));
+        ;
     }
 
     // HV Temperature
     if (hvTempAvg > HV_TEMP_HIGH) {
-        ledArray1 |= (1 << (HV_TEMP_OFFSET + 2));
+        ledArray1 |= (1 << HV_TEMP_LED_3);
+        ledArray1 |= (1 << HV_TEMP_LED_2);
+        ledArray1 |= (1 << HV_TEMP_LED_1);
     }
-    else if (hvTempAvg < HV_TEMP_HIGH && hvTempAvg > HV_TEMP_MID) {
-        ledArray1 |= (1 << (HV_TEMP_OFFSET + 2));
-        ledArray1 |= (1 << (HV_TEMP_OFFSET + 1));
+    else if (hvTempAvg < HV_TEMP_HIGH && hvTempAvg >= HV_TEMP_MID) {
+        ledArray1 |= (1 << HV_TEMP_LED_2);
+        ledArray1 |= (1 << HV_TEMP_LED_1);
     }
-    else if (hvTempAvg < HV_TEMP_MID && hvTempAvg > HV_TEMP_LOW) {
-        ledArray1 |= (1 << (HV_TEMP_OFFSET + 1));
-    }
-    else if (hvTempAvg < HV_TEMP_LOW && hvTempAvg > HV_TEMP_ALARM) {
-        ledArray1 |= (1 << (HV_TEMP_OFFSET + 1));
-        ledArray1 |= (1 << (HV_TEMP_OFFSET + 0));
+    else if (hvTempAvg < HV_TEMP_MID && hvTempAvg >= HV_TEMP_LOW) {
+        ledArray1 |= (1 << HV_TEMP_LED_1);
     }
     else if (hvTempAvg < HV_TEMP_ALARM) {
-        ledArray1 |= (1 << (HV_TEMP_OFFSET + 0));
+        ;
     }
 
     // Water Temperature 1
     if (waterTemp1 > WATER_T_1_HIGH) {
-        ledArray1 |= (1 << (WATER_T_1_OFFSET + 2));
+        ledArray1 |= (1 << WATER_T_1_LED_3);
+        ledArray1 |= (1 << WATER_T_1_LED_2);
+        ledArray1 |= (1 << WATER_T_1_LED_1);
     }
-    else if (waterTemp1 < WATER_T_1_HIGH && waterTemp1 > WATER_T_1_MID) {
-        ledArray1 |= (1 << (WATER_T_1_OFFSET + 2));
-        ledArray1 |= (1 << (WATER_T_1_OFFSET + 1));
+    else if (waterTemp1 < WATER_T_1_HIGH && waterTemp1 >= WATER_T_1_MID) {
+        ledArray1 |= (1 << WATER_T_1_LED_2);
+        ledArray1 |= (1 << WATER_T_1_LED_1);
     }
-    else if (waterTemp1 < WATER_T_1_MID && waterTemp1 > WATER_T_1_LOW) {
-        ledArray1 |= (1 << (WATER_T_1_OFFSET + 1));
-    }
-    else if (waterTemp1 < WATER_T_1_LOW && waterTemp1 > WATER_T_1_ALARM) {
-        ledArray1 |= (1 << (WATER_T_1_OFFSET + 1));
-        ledArray1 |= (1 << (WATER_T_1_OFFSET + 0));
+    else if (waterTemp1 < WATER_T_1_MID && waterTemp1 >= WATER_T_1_LOW) {
+        ledArray1 |= (1 << WATER_T_1_LED_1);
     }
     else if (waterTemp1 < WATER_T_1_ALARM) {
-        ledArray1 |= (1 << (WATER_T_1_OFFSET + 0));
+        ;
     }
 
     // Water Temperature 2
     if (waterTemp2 > WATER_T_2_HIGH) {
-        ledArray1 |= (1 << (WATER_T_2_OFFSET + 2));
+        ledArray1 |= (1 << WATER_T_2_LED_3);
+        ledArray1 |= (1 << WATER_T_2_LED_2);
+        ledArray1 |= (1 << WATER_T_2_LED_1);
     }
-    else if (waterTemp2 < WATER_T_2_HIGH && waterTemp1 > WATER_T_2_MID) {
-        ledArray1 |= (1 << (WATER_T_2_OFFSET + 2));
-        ledArray1 |= (1 << (WATER_T_2_OFFSET + 1));
+    else if (waterTemp2 < WATER_T_2_HIGH && waterTemp1 >= WATER_T_2_MID) {
+        ledArray1 |= (1 << WATER_T_2_LED_2);
+        ledArray1 |= (1 << WATER_T_2_LED_1);
     }
-    else if (waterTemp2 < WATER_T_2_MID && waterTemp1 > WATER_T_2_LOW) {
-        ledArray1 |= (1 << (WATER_T_2_OFFSET + 1));
-    }
-    else if (waterTemp2 < WATER_T_2_LOW && waterTemp1 > WATER_T_2_ALARM) {
-        ledArray1 |= (1 << (WATER_T_2_OFFSET + 1));
-        ledArray1 |= (1 << (WATER_T_2_OFFSET + 0));
+    else if (waterTemp2 < WATER_T_2_MID && waterTemp1 >= WATER_T_2_LOW) {
+        ledArray1 |= (1 << WATER_T_2_LED_1);
     }
     else if (waterTemp2 < WATER_T_2_ALARM) {
-        ledArray1 |= (1 << (WATER_T_2_OFFSET + 0));
+        ;
     }
 
     //HV Voltage big
@@ -193,7 +183,11 @@ uint8_t prepareStates() {
         hvLedTemp >>= 1;
     }
 
-    ledArray1 |= ((uint64_t)hvLedTemp << HV_BIG_VOL_OFFSET);
+    for (uint8_t i = 0 ; i < 16 ; i++ ){
+        if (hvLedTemp >> i & 1){
+            ledArray1 |= 1 << hvBigLedShift[i];
+        }
+    }
 
     return 0;
 }
@@ -311,13 +305,6 @@ uint8_t test() {
         testT2State = 0;
     }
 
-    ledArray1 |= (1 << (LV_VOLTAGE_OFFSET + testLvVoltageState));
-    ledArray1 |= (1 << (LV_TEMP_OFFSET + testLvTempState));
-    ledArray1 |= (1 << (HV_VOLTAGE_OFFSET + testHvVoltageState));
-    ledArray1 |= (1 << (HV_TEMP_OFFSET + testHvTempState));
-    ledArray1 |= (1 << (WATER_T_1_OFFSET + testT1State));
-    ledArray1 |= (1 << (WATER_T_2_OFFSET + testT2State));
-
     uint16_t hvLedTemp = UINT16_MAX;
     uint8_t hvVolTemp = testRound % 100;
 
@@ -326,12 +313,14 @@ uint8_t test() {
         hvLedTemp >>= 1;
     }
 
-    ledArray1 |= ((uint64_t)hvLedTemp << HV_BIG_VOL_OFFSET);
+    for (uint8_t i = 0 ; i < 16 ; i++ ){
+        if (hvLedTemp >> i & 1){
+            ledArray1 |= 1 << hvBigLedShift[i];
+        }
+    }
 
     carSpeed = testSpeed;
-    hvVoltage = testSpeed;
-//    ledArray1 = 0;
-//    ledArray2 = 3;
+    hvVoltage = testSpeed % 100;
 
     send7Seg();
     sendLed();
