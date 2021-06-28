@@ -273,14 +273,14 @@ void USB_LP_CAN1_RX0_IRQHandler(void) {
             waterTemp1 = RxData[WATER_T_1_BYTE];
             waterTemp2 = RxData[WATER_T_2_BYTE];
         }
-        if (RxHeader->StdId == LCD_BUTTON_ID){
-            if (RxData[LCD_BUTTON_BYTE]){
+        if (RxHeader->StdId == LCD_BUTTON_ID) {
+            if (RxData[LCD_BUTTON_BYTE]) {
                 lcdPage++;
                 if (lcdPage == 3) lcdPage = 0;
             }
         }
-        if (RxHeader->StdId == SEG_BUTTON_ID){
-            if (RxData[SEG_BUTTON_BYTE]){
+        if (RxHeader->StdId == SEG_BUTTON_ID) {
+            if (RxData[SEG_BUTTON_BYTE]) {
                 speedOrHvPer |= 1;
                 changeSegTimeStamp = HAL_GetTick();
             }
@@ -301,8 +301,8 @@ void TIM2_IRQHandler(void) {
 
     updateDisplays = 1;
 
-    if (speedOrHvPer){
-        if (HAL_GetTick() > changeSegTimeStamp + HV_PERCENTAGE_TIME_MAX){
+    if (speedOrHvPer) {
+        if (HAL_GetTick() > changeSegTimeStamp + HV_PERCENTAGE_TIME_MAX) {
             speedOrHvPer = 0;
         }
     }
