@@ -45,5 +45,10 @@
 
 #define LCD_BUTTON_ID   0x00
 #define LCD_BUTTON_BYTE 0x00
+#define LCD_BUTTON_BIT  0x00
+
+#define SEG_BUTTON_ID   0x00
+#define SEG_BUTTON_BYTE 0x00
+#define SEG_BUTTON_BIT  0x00
 
 #endif /* INC_CAN_BUS_PROTOCOL_H_ */
