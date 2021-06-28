@@ -67,8 +67,8 @@ extern UART_HandleTypeDef huart1;
 extern CAN_RxHeaderTypeDef *RxHeader;
 extern uint8_t RxData[8];
 
-extern float lvVoltage;
-extern float lvTempAvg;
+extern uint8_t lvVoltage;
+extern uint8_t lvTempAvg;
 extern float lvTempMax;
 extern uint8_t lvState;
 
@@ -264,10 +264,10 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
             carSpeed = RxData[CAR_SPEED_BYTE];
         }
         if (RxHeader->StdId == LV_VOLTAGE_ID) {
-            lvVoltage = (float) RxData[LV_VOLTAGE_BYTE] / 10.0f;
+            lvVoltage = (uint8_t) ((float) RxData[LV_VOLTAGE_BYTE] / 10.0f);
         }
         if (RxHeader->StdId == LV_TEMP_A_ID) {
-            lvTempAvg = (float) RxData[LV_TEMP_A_BYTE] / 10.0f;
+            lvTempAvg = (uint8_t) ((float)RxData[LV_TEMP_A_BYTE] / 10.0f);
         }
         if (RxHeader->StdId == LV_TEMP_M_ID) {
             lvTempMax = (float) RxData[LV_TEMP_M_BYTE] / 10.0f;

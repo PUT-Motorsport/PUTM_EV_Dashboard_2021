@@ -21,12 +21,21 @@ uint8_t testT1State = 0;
 uint8_t testT2State = 0;
 uint8_t testLedArray = 0;
 
+uint8_t testVariables[5][6] = {
+        {100, 25, 100, 25, 30,  30},
+        {70,  40, 70,  40, 50,  50},
+        {50,  50, 50,  50, 70,  70},
+        {20,  57, 20,  57, 95,  95},
+        {5,   65, 5,   65, 110, 110}
+};
+uint8_t testVariableIterator = 0;
+
 #endif
 
 extern SPI_HandleTypeDef hspi1;
 extern SPI_HandleTypeDef hspi2;
 
-extern float lvVoltage;
+extern uint8_t lvVoltage;
 extern float lvTempAvg;
 extern float lvTempMax;
 extern uint8_t lvState;
@@ -90,19 +99,19 @@ uint8_t prepareStates() {
     }
 
     // LV Temperature
-    if (lvTempAvg > LV_TEMP_HIGH) {
+    if (lvTempAvg < LV_TEMP_HIGH) {
         ledArray1 |= (1 << LV_TEMP_LED_3);
         ledArray1 |= (1 << LV_TEMP_LED_2);
         ledArray1 |= (1 << LV_TEMP_LED_1);
     }
-    else if (lvTempAvg < LV_TEMP_HIGH && lvTempAvg >= LV_TEMP_MID) {
+    else if (lvTempAvg > LV_TEMP_HIGH && lvTempAvg <= LV_TEMP_MID) {
         ledArray1 |= (1 << LV_TEMP_LED_2);
         ledArray1 |= (1 << LV_TEMP_LED_1);
     }
-    else if (lvTempAvg < LV_TEMP_MID && lvTempAvg >= LV_TEMP_LOW) {
+    else if (lvTempAvg > LV_TEMP_MID && lvTempAvg <= LV_TEMP_LOW) {
         ledArray1 |= (1 << LV_TEMP_LED_1);
     }
-    else if (lvTempAvg < LV_TEMP_ALARM) {
+    else if (lvTempAvg > LV_TEMP_ALARM) {
         ;
     }
 
@@ -124,53 +133,53 @@ uint8_t prepareStates() {
     }
 
     // HV Temperature
-    if (hvTempAvg > HV_TEMP_HIGH) {
+    if (hvTempAvg < HV_TEMP_HIGH) {
         ledArray1 |= (1 << HV_TEMP_LED_3);
         ledArray1 |= (1 << HV_TEMP_LED_2);
         ledArray1 |= (1 << HV_TEMP_LED_1);
     }
-    else if (hvTempAvg < HV_TEMP_HIGH && hvTempAvg >= HV_TEMP_MID) {
+    else if (hvTempAvg > HV_TEMP_HIGH && hvTempAvg <= HV_TEMP_MID) {
         ledArray1 |= (1 << HV_TEMP_LED_2);
         ledArray1 |= (1 << HV_TEMP_LED_1);
     }
-    else if (hvTempAvg < HV_TEMP_MID && hvTempAvg >= HV_TEMP_LOW) {
+    else if (hvTempAvg > HV_TEMP_MID && hvTempAvg <= HV_TEMP_LOW) {
         ledArray1 |= (1 << HV_TEMP_LED_1);
     }
-    else if (hvTempAvg < HV_TEMP_ALARM) {
+    else if (hvTempAvg > HV_TEMP_ALARM) {
         ;
     }
 
     // Water Temperature 1
-    if (waterTemp1 > WATER_T_1_HIGH) {
+    if (waterTemp1 < WATER_T_1_HIGH) {
         ledArray1 |= (1 << WATER_T_1_LED_3);
         ledArray1 |= (1 << WATER_T_1_LED_2);
         ledArray1 |= (1 << WATER_T_1_LED_1);
     }
-    else if (waterTemp1 < WATER_T_1_HIGH && waterTemp1 >= WATER_T_1_MID) {
+    else if (waterTemp1 > WATER_T_1_HIGH && waterTemp1 <= WATER_T_1_MID) {
         ledArray1 |= (1 << WATER_T_1_LED_2);
         ledArray1 |= (1 << WATER_T_1_LED_1);
     }
-    else if (waterTemp1 < WATER_T_1_MID && waterTemp1 >= WATER_T_1_LOW) {
+    else if (waterTemp1 > WATER_T_1_MID && waterTemp1 <= WATER_T_1_LOW) {
         ledArray1 |= (1 << WATER_T_1_LED_1);
     }
-    else if (waterTemp1 < WATER_T_1_ALARM) {
+    else if (waterTemp1 > WATER_T_1_ALARM) {
         ;
     }
 
     // Water Temperature 2
-    if (waterTemp2 > WATER_T_2_HIGH) {
-        ledArray1 |= (1 << WATER_T_2_LED_3);
-        ledArray1 |= (1 << WATER_T_2_LED_2);
+    if (waterTemp2 < WATER_T_2_HIGH) {
+        ledArray2 |= (1 << WATER_T_2_LED_3);
+        ledArray2 |= (1 << WATER_T_2_LED_2);
         ledArray1 |= (1 << WATER_T_2_LED_1);
     }
-    else if (waterTemp2 < WATER_T_2_HIGH && waterTemp1 >= WATER_T_2_MID) {
-        ledArray1 |= (1 << WATER_T_2_LED_2);
+    else if (waterTemp2 > WATER_T_2_HIGH && waterTemp1 <= WATER_T_2_MID) {
+        ledArray2 |= (1 << WATER_T_2_LED_2);
         ledArray1 |= (1 << WATER_T_2_LED_1);
     }
-    else if (waterTemp2 < WATER_T_2_MID && waterTemp1 >= WATER_T_2_LOW) {
+    else if (waterTemp2 > WATER_T_2_MID && waterTemp1 <= WATER_T_2_LOW) {
         ledArray1 |= (1 << WATER_T_2_LED_1);
     }
-    else if (waterTemp2 < WATER_T_2_ALARM) {
+    else if (waterTemp2 > WATER_T_2_ALARM) {
         ;
     }
 
@@ -194,9 +203,7 @@ uint8_t prepareStates() {
 
 uint8_t sendLed() {
     uint8_t status = 0;
-#ifndef TEST
     prepareStates();
-#endif
     HAL_GPIO_WritePin(SPI2_NSS_GPIO_Port, SPI2_NSS_Pin, 0);
     status |= HAL_SPI_Transmit(&hspi2, (uint8_t *)(&ledArray2), 1, 100);
     status |= HAL_SPI_Transmit(&hspi2, (uint8_t *)(&ledArray1), 4, 100);
@@ -271,20 +278,19 @@ uint8_t sendAlfaNum() {
 #ifdef TEST
 
 uint8_t test() {
+    ledArray1 = 0;
+    ledArray2 = 0;
     testRound++;
     testSpeed++;
 
     if (testRound % TEST_INTERVAL == 0) {
-        testLvVoltageState++;
-        testLvTempState++;
-        testHvVoltageState++;
-        testHvTempState++;
-        testT1State++;
-        testT2State++;
-
-        testLedArray++;
-        if (testLedArray > 31)
-            testLedArray = 0;
+        lvVoltage = testVariables[testVariableIterator][0];
+        lvTempAvg = testVariables[testVariableIterator][1];
+        hvVoltage = testVariables[testVariableIterator][2];
+        hvTempAvg = testVariables[testVariableIterator][3];
+        waterTemp1 = testVariables[testVariableIterator][4];
+        waterTemp2 = testVariables[testVariableIterator][5];
+        testVariableIterator++;
 
         char temp[16];
         sprintf(temp, "%d %d %d %d %d %d %d %d", (testRound + 0) % 10, (testRound + 1) % 10, (testRound + 2) % 9, (testRound  + 3) % 9,
@@ -296,14 +302,8 @@ uint8_t test() {
         lcdWriteString(temp);
     }
 
-    if (testLvTempState == 3) {
-        testLvVoltageState = 0;
-        testLvTempState = 0;
-        testHvVoltageState = 0;
-        testHvTempState = 0;
-        testT1State = 0;
-        testT2State = 0;
-    }
+    if (testVariableIterator == 5)
+        testVariableIterator = 0;
 
     uint16_t hvLedTemp = UINT16_MAX;
     uint8_t hvVolTemp = testRound % 100;
@@ -312,7 +312,7 @@ uint8_t test() {
         hvVolTemp += 6;
         hvLedTemp >>= 1;
     }
-
+    hvLedTemp = hvLedTemp << 1 | 1;
     for (uint8_t i = 0 ; i < 16 ; i++ ){
         if (hvLedTemp >> i & 1){
             ledArray1 |= 1 << hvBigLedShift[i];
