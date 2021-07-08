@@ -85,6 +85,8 @@ uint32_t ledArray1;
 uint8_t ledArray2;
 uint32_t segDisplayArray;
 
+uint8_t updateAlfaNum;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -187,8 +189,11 @@ int main(void) {
             // send data to 7seg displays
             status |= send7Seg();
 
-            // send data to alfanum display
-            status |= sendAlfaNum();
+            if (updateAlfaNum) {
+                // send data to alfanum display
+                status |= sendAlfaNum();
+                updateAlfaNum = 0;
+            }
 #else
             test();
 #endif
@@ -458,9 +463,9 @@ static void MX_TIM3_Init(void) {
 
     /* USER CODE END TIM3_Init 1 */
     htim3.Instance = TIM3;
-    htim3.Init.Prescaler = 0;
+    htim3.Init.Prescaler = 31999;
     htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-    htim3.Init.Period = 65535;
+    htim3.Init.Period = 2000;
     htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
     htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
     if (HAL_TIM_Base_Init(&htim3) != HAL_OK) {
@@ -572,10 +577,8 @@ void My_CAN_init(void) {
     sFilterConfig.FilterBank = 0;
     sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
     sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
-    //sFilterConfig.FilterIdHigh = 0x0A << 5;
     sFilterConfig.FilterIdHigh = 0x0000;
     sFilterConfig.FilterIdLow = 0x0000;
-    //sFilterConfig.FilterMaskIdHigh = 0xFFFF << 5;
     sFilterConfig.FilterMaskIdHigh = 0x0000;
     sFilterConfig.FilterMaskIdLow = 0x0000;
     sFilterConfig.FilterFIFOAssignment = CAN_RX_FIFO0;
