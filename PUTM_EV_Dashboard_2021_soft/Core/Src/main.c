@@ -76,6 +76,9 @@ uint8_t hvState;
 float waterTemp1;
 float waterTemp2;
 
+uint16_t breakPreasure1;
+uint16_t breakPreasure2;
+
 uint8_t updateDisplays;
 uint8_t speedOrHvPer;
 uint32_t changeSegTimeStamp;

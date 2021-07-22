@@ -8,8 +8,8 @@
 #ifndef INC_CAN_BUS_PROTOCOL_H_
 #define INC_CAN_BUS_PROTOCOL_H_
 
-#define CAR_SPEED_ID    0x10
-#define CAR_SPEED_BYTE  0x00
+#define CAR_SPEED_ID    0x0D
+#define CAR_SPEED_BYTE  0x05
 
 #define LV_VOLTAGE_ID   0x0C
 #define LV_VOLTAGE_BYTE 0x01
@@ -22,23 +22,19 @@
 
 #define LV_STATE_BYTE  0x00
 
-//TODO
-#define HV_VOLTAGE_ID   0x00
-#define HV_VOLTAGE_BYTE 0x00
+#define HV_VOLTAGE_ID   0x0E
+#define HV_VOLTAGE_BYTE 0x05
 
-//TODO
-#define HV_TEMP_A_ID    0x00
-#define HV_TEMP_A_BYTE  0x00
+#define HV_TEMP_A_ID    0x0E
+#define HV_TEMP_A_BYTE  0x04
 
-//TODO
 #define HV_TEMP_M_ID    0x00
 #define HV_TEMP_M_BYTE  0x00
 
-//TODO
-#define HV_STATE_ID     0x00
-#define HV_STATE_BYTE   0x00
+#define HV_STATE_ID     0x0E
+#define HV_STATE_BYTE   0x06
 
-#define WATER_T_1_ID    0x0B
+#define WATER_T_1_ID    0x61
 #define WATER_T_1_BYTE  0x00
 
 #define WATER_T_2_BYTE  0x01

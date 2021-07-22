@@ -64,5 +64,8 @@
 
 #define HV_PERCENTAGE_TIME_MAX  2000
 
+#define WHEEL_SIZE          0
+#define SPEED_DIVIDER       1
+#define HV_VOLTAGE_MLP      0.4f
 
 #endif //PUTM_EV_DASHBOARD_2021_SOFT_COMMON_H

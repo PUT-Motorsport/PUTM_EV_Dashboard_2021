@@ -80,6 +80,10 @@ extern uint8_t hvState;
 
 extern float waterTemp1;
 extern float waterTemp2;
+
+extern uint16_t breakPreasure1;
+extern uint16_t breakPreasure2;
+
 extern uint8_t carSpeed;
 
 extern uint8_t lcdPage;
@@ -248,9 +252,11 @@ void USB_LP_CAN1_RX0_IRQHandler(void) {
     /* USER CODE BEGIN USB_LP_CAN1_RX0_IRQn 0 */
     if (HAL_CAN_GetRxMessage(&hcan, CAN_RX_FIFO0, RxHeader, RxData) == HAL_OK) {
         if (RxHeader->StdId == CAR_SPEED_ID) {
-            carSpeed = RxData[CAR_SPEED_BYTE];
+            uint16_t tempspeed = (RxData[CAR_SPEED_BYTE] << 8) | (RxData[CAR_SPEED_BYTE + 1]);
+            carSpeed = (uint8_t)((float)tempspeed * 6.28f * (float)WHEEL_SIZE / (float)SPEED_DIVIDER);
         }
         if (RxHeader->StdId == LV_VOLTAGE_ID) {
+            // TODO: voltage -> Percentage
             lvVoltage = (uint8_t) ((float) RxData[LV_VOLTAGE_BYTE] / 10.0f);
         }
         if (RxHeader->StdId == LV_TEMP_A_ID) {
@@ -261,7 +267,7 @@ void USB_LP_CAN1_RX0_IRQHandler(void) {
             lvState = RxData[LV_STATE_BYTE];
         }
         if (RxHeader->StdId == HV_VOLTAGE_ID) {
-            hvVoltage = RxData[HV_VOLTAGE_BYTE];
+            hvVoltage = (uint8_t) ((float)RxData[HV_VOLTAGE_BYTE] * HV_VOLTAGE_MLP);
         }
         if (RxHeader->StdId == HV_TEMP_A_ID) {
             hvTempAvg = (float) RxData[HV_TEMP_A_BYTE] / 10.0f;
