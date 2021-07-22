@@ -61,6 +61,7 @@
 
 #define HV_BIG_VOL_OFFSET   0
 
+#define TS_STATE_LED        8
 
 #define HV_PERCENTAGE_TIME_MAX  2000
 

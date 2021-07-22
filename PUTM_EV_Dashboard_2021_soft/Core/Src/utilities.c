@@ -53,6 +53,7 @@ extern uint8_t speedOrHvPer;
 extern uint32_t ledArray1;
 extern uint8_t ledArray2;
 extern uint32_t segDisplayArray;
+extern uint8_t TSState;
 
 uint8_t lcdPage = 0;
 char *lcdStringRow0Up = "HV  %3d  TW1  %2d";
@@ -115,23 +116,6 @@ uint8_t prepareStates() {
         ;
     }
 
-    // HV Voltage
-    if (hvVoltage > HV_VOLTAGE_HIGH) {
-        ledArray1 |= (1 << HV_VOLTAGE_LED_3);
-        ledArray1 |= (1 << HV_VOLTAGE_LED_2);
-        ledArray1 |= (1 << HV_VOLTAGE_LED_1);
-    }
-    else if (hvVoltage < HV_VOLTAGE_HIGH && hvVoltage >= HV_VOLTAGE_MID) {
-        ledArray1 |= (1 << HV_VOLTAGE_LED_2);
-        ledArray1 |= (1 << HV_VOLTAGE_LED_1);
-    }
-    else if (hvVoltage < HV_VOLTAGE_MID && hvVoltage >= HV_VOLTAGE_LOW) {
-        ledArray1 |= (1 << HV_VOLTAGE_LED_1);
-    }
-    else if (hvVoltage < HV_VOLTAGE_ALARM) {
-        ;
-    }
-
     // HV Temperature
     if (hvTempAvg < HV_TEMP_HIGH) {
         ledArray1 |= (1 << HV_TEMP_LED_3);
@@ -182,6 +166,10 @@ uint8_t prepareStates() {
     else if (waterTemp2 > WATER_T_2_ALARM) {
         ;
     }
+
+    // TS State
+    if (TSState)
+        ledArray1 |= (1 << TS_STATE_LED);
 
     //HV Voltage big
     uint16_t hvLedTemp = UINT16_MAX;

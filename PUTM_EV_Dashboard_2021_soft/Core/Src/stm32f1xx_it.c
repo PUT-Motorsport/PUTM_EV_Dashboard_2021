@@ -84,6 +84,8 @@ extern float waterTemp2;
 extern uint16_t breakPreasure1;
 extern uint16_t breakPreasure2;
 
+extern uint8_t TSState;
+
 extern uint8_t carSpeed;
 
 extern uint8_t lcdPage;
@@ -292,6 +294,14 @@ void USB_LP_CAN1_RX0_IRQHandler(void) {
             if (RxData[SEG_BUTTON_BYTE]) {
                 speedOrHvPer |= 1;
                 changeSegTimeStamp = HAL_GetTick();
+            }
+        }
+        if (RxHeader->StdId == TS_STATE_ID){
+            if (RxData[TS_State_BYTE] >> TS_State_BIT & 0x01){
+                TSState = 1;
+            }
+            else{
+                TSState = 0;
             }
         }
     }
